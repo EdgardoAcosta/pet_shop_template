@@ -1,14 +1,38 @@
 {
-  "Product":
-  {
-    "0":
-    {
-      "Id": "0",
-      "Type": "",
-      "Name": "",
-      "Description": "",
-      "Price": "",
-      "Stock": ""
-    }
+  "0": {
+    "Id": "0",
+    "Type": "dog",
+    "Name": "Collar para cachorro",
+    "Description": "Descrição do collar para cachorro.",
+    "Price": "100$",
+    "Stock": "20",
+    "Photo": "Images/Categories/Accessories/collar_perro.jpg"
+  },
+  "1": {
+    "Id": "1",
+    "Type": "cat",
+    "Name": "Casa para gato",
+    "Description": "Descrição da casa para gatos",
+    "Price": "200$",
+    "Stock": "40",
+    "Photo": "Images/Categories/Accessories/kennei-trans.jpg"
+  },
+  "2": {
+    "Id": "2",
+    "Type": "dog",
+    "Name": "collar de perro",
+    "Description": "Descrição de collar para perro",
+    "Price": "150$",
+    "Stock": "2",
+    "Photo": "Images/Categories/Accessories/collar_perro.jpg"
+  },
+  "3": {
+    "Id": "3",
+    "Type": "cat",
+    "Name": "collar para gato",
+    "Description": "Descrição da collar para gatos",
+    "Price": "200$",
+    "Stock": "40",
+    "Photo": "Images/Categories/Accessories/collar_gato.jpg"
   }
 }
