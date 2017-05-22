@@ -1,0 +1,14 @@
+{
+  "Product":
+  {
+    "0":
+    {
+      "Id": "0",
+      "Type": "",
+      "Name": "",
+      "Description": "",
+      "Price": "",
+      "Stock": ""
+    }
+  }
+}

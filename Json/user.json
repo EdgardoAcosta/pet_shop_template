@@ -1,0 +1,15 @@
+{
+  "Usuario":
+  {
+    "0":
+    {
+      "Id": "0",
+      "Type": "",
+      "Name": "",
+      "Email": "",
+      "Password": "",
+      "Phone": "",
+      "Adress": ""
+    }
+  }
+}

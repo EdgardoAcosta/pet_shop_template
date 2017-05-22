@@ -1,0 +1,19 @@
+{
+  "Service": {
+    "0": {
+      "Id": "0",
+      "Type": "",
+      "Name": "",
+      "Description": "",
+      "Price": ""
+    },
+    "1":
+    {
+      "Id": "1",
+      "Type": "",
+      "Name": "",
+      "Description": "",
+      "Price": ""
+    }
+  }
+}

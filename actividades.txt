@@ -1,0 +1,8 @@
+index (productos) - Edgardo
+Carrito - Edgardo
+Calendario - Richard
+Agregar mascota - Manuel
+loging - "El primero que termine con sus actividades"
+registar_admin, registrar_cliente, registrar_producto, registrar_servicio (Admin) - Manuel
+
+
