@@ -1,0 +1,219 @@
+<!DOCTYPE>
+<html>
+<head>
+    <!-- tab image-->
+    <link rel="icon" href="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/698183/1161/773/m1/fpnw/wm0/pet-shop-.png?1444150631&s=5abfd42752dfc67a6903b054b5680d87">
+
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Pet Shop</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--Jquery-->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+    <!--script-->
+    <script src="js/cart.js"></script>
+    <!--Toaster-->
+    <link href="assets/toastr/toastr.css" rel="stylesheet"/>
+    <script src="assets/toastr/toastr.min.js"></script>
+
+</head>
+
+<body class="fixed-sn green-skin">
+<!--Double navigation-->
+<header>
+    <!-- Sidebar navigation -->
+    <ul id="slide-out" class="side-nav fixed custom-scrollbar" onclick="alert('Hola mundo')">
+
+        <!-- Logo -->
+        <li>
+            <div class="logo-wrapper waves-light">
+                <a href="#"><img src="Images/Logo Pet Shop.png" class="img-fluid flex-center"></a>
+            </div>
+        </li>
+        <!--/. Logo -->
+
+        <!--Social-->
+        <li>
+            <ul class="social">
+                <li><a href="https://www.facebook.com/mdbootstrap" target="_blank" class="icons-sm fb-ic"><i
+                        class="fa fa-facebook"> </i></a></li>
+                <li><a class="icons-sm git-ic"><i class="fa fa-twitter"> </i></a></li>
+            </ul>
+        </li>
+        <!--/Social-->
+
+        <!--Search Form-->
+        <li>
+            <form class="search-form" role="search">
+                <div class="form-group waves-light">
+                    <input type="text" class="form-control" placeholder="Pesquisa">
+                </div>
+            </form>
+        </li>
+        <!--/.Search Form-->
+
+        <!-- Side navigation links -->
+        <li>
+            <ul class="collapsible collapsible-accordion">
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-diamond"></i> Produtos<i
+                        class="fa fa-angle-down rotate-icon"></i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="dropdown-item" href="#">Vestuário</a></li>
+                            <li><a class="dropdown-item" href="#">Alimentação</a></li>
+                            <li><a class="dropdown-item" href="#">Acessórios</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-briefcase"></i> Serviços<i
+                        class="fa fa-angle-down rotate-icon"></i></a>
+                    <div class="collapsible-body">
+                        <ul>
+                            <li><a class="dropdown-item" href="#">Banhos</a></li>
+                            <li><a class="dropdown-item" href="#">Corte de cabelo</a></li>
+                            <li><a class="dropdown-item" href="#">Corte de unhas</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a class="waves-effect arrow-r"><i class="fa fa-calendar "></i> Calendário</a></li>
+            </ul>
+        </li>
+        <!--/. Side navigation links -->
+
+    </ul>
+    <!--/. Sidebar navigation -->
+
+    <!--Navbar-->
+    <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+
+        <!-- SideNav slide-out button -->
+        <div class="pull-left">
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+        </div>
+
+
+    </nav>
+    <!--/.Navbar-->
+</header>
+<!--/Double navigation-->
+<main>
+    <div class="container-fluid">
+        <section>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-xs-center m-t-3 m-b-2">Carrinho de compras</h5>
+
+                    <div class="table-responsive">
+                        <!--Products table-->
+                        <table class="table product-table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Produto</th>
+                                <th>Prceço R$ </th>
+                                <th>Quantidade</th>
+                                <th>Total R$ </th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="table-cart">
+
+                            </tbody>
+                        </table>
+                        <!--/,Products table-->
+
+                        <div class="text-xs-center">
+                            <a href="#" class="btn light-blue darken-4 waves-effect waves-light">Realizar compra</a>
+                            <a href="#" class="white waves-effect waves-light">Continuar pesquisando</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!--Footer-->
+<footer class="page-footer center-on-small-only">
+
+    <!--Footer Links-->
+    <div class="container-fluid">
+        <div class="row">
+            <!--Second column-->
+            <div class="col-md-3 offset-md-1">
+                <h5 class="title">Produtos</h5>
+
+                <ul>
+                    <li><a href="#!">Vestuário</a></li>
+                    <li><a href="#!">Alimentação</a></li>
+                    <li><a href="#!">Accessories</a></li>
+                </ul>
+            </div>
+            <!--/.Second column-->
+
+            <hr class="hidden-md-up">
+
+            <!--Third column-->
+            <div class="col-md-3">
+                <h5 class="title">Serviços</h5>
+
+                <ul>
+                    <li><a href="#!">Banhos</a></li>
+                    <li><a href="#!">Corte de cabelo</a></li>
+                    <li><a href="#!">Corte de unhas</a></li>
+                </ul>
+            </div>
+            <!--/.Third column-->
+
+            <!--Fourth column-->
+            <div class="col-md-3">
+                <h5 class="title">Nos</h5>
+
+                <ul>
+                    <li>Escrevenos a: <a href="mailto:pet.shop@gmail.com">pet.shop@gmail.com</a></li>
+                    <li>Chámanos a: +5511659566351</li>
+                </ul>
+            </div>
+            <!--/.Fourth column-->
+        </div>
+    </div>
+    <!--/.Footer Links-->
+
+    <hr>
+
+    <!--Social buttons-->
+    <div class="social-section">
+        <ul>
+            <li><a href="#" target="_blank" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a>
+            </li>
+            <li><a href="#"" target="_blank" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a>
+            </li>
+        </ul>
+    </div>
+    <!--/.Social buttons-->
+
+    <!--Copyright-->
+    <div class="footer-copyright">
+        <div class="container-fluid">
+            © 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
+        </div>
+    </div>
+    <!--/.Copyright-->
+</footer>
+<!--/.Footer-->
+</body>
+</html>
