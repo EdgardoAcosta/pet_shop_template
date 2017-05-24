@@ -6,9 +6,9 @@ function get_cart() {
     $.post("php/get_cart.php", function (response) {
     }, "json").done(function (response) {
 
-        if (response.success == 1){
+        if (response.success == 1) {
             var id, name, description, type, price, stock, photo;
-            for (var i = 0; i < response["Cart"].length - 1; i++){
+            for (var i = 0; i < response["Cart"].length - 1; i++) {
                 id = response["Cart"][i]["Id"];
                 name = response["Cart"][i]["Name"];
                 type = response["Cart"][i]["Type"];
@@ -17,17 +17,19 @@ function get_cart() {
                 stock = response["Cart"][i]["Stock"];
                 photo = response["Cart"][i]["Photo"];
 
-                $("#table-cart").append(' <tr id="'+id+'"><td scope="row"><img src="../../'+photo+'" ' +
-                    'alt="Prato de cachorro" class="img-fluid z-depth-0"></td> <td>'+name+'</td><td class="price">'+price+'</td>' +
+                $("#table-cart").append(' <tr id="' + id + '"><td scope="row"><img src="../../' + photo + '" ' +
+                    'alt="Prato de cachorro" class="img-fluid z-depth-0"></td> <td>' + name + '</td><td class="price">' + price + '</td>' +
                     '<td><span class="quantity">1</span><div class="btn-group" data-toggle="buttons">' +
                     '<label class="btn btn-sm btn-primary btn-rounded waves-effect waves-light">' +
-                    '<input type="radio" name="quantity"> - </label>' +
+                    '<input type="radio" name="quantity" onclick="rest_quantity(this)"> - </label>' +
                     '<label class="btn btn-sm btn-primary btn-rounded waves-effect waves-light">' +
-                    ' <input type="radio" name="quantity" onclick="add_quantity(this)"> +</label></div></td><td class="total" ">R$ '+price+'</td>' +
+                    ' <input type="radio" name="quantity" onclick="add_quantity(this)"> +</label></div></td><td class="total"> ' + price + '</td>' +
                     ' <td><button class="btn btn-sm btn-danger waves-effect waves-light"' +
                     ' data-original-title="Eliminar produto" type="button" data-toggle="tooltip"' +
                     ' data-placement="top" title="">x</button> </td></tr>');
             }
+            $("#table-cart").append('<tr"><td></td><td></td><td></td><td style="text-align: right" >Total</td><td id="total-purch"></td></tr>');
+            total_purchase();
         }
         else {
 
@@ -38,21 +40,52 @@ function get_cart() {
     });
 }
 function add_quantity(element) {
-    console.log("click + ");
     var value = "#" + $(element).closest('tr').attr('id');
-    console.log(value);
-    var actual_price = parseFloat($(value).closest('td .price').text());
-
-
-    console.log("price " + $(value).closest('td .price'));
-    var quiantity = parseInt($(element).closest('.quantity').text()) + 1;
-    console.log("new quantity " + quiantity);
-    var total = $(element).closest('.total').text(actual_price * quiantity);
-    console.log("total " + total);
-    $(element).closest('.quantity').text(quiantity);
+    var actual_price = parseFloat($(value).closest('tr').find('td.price').text());
+    var quiantity = parseInt($(value).closest('tr').find('td span.quantity').text()) + 1;
+    var total = $(element).closest('tr').find('td.total').text(actual_price * quiantity);
+    $(value).closest('tr').find('td span.quantity').text(quiantity);
+    total_purchase()
 }
-function rest_quantity() {
+function rest_quantity(element) {
+    var value = "#" + $(element).closest('tr').attr('id');
+    var actual_price = parseFloat($(value).closest('tr').find('td.price').text());
+    var quiantity = parseInt($(value).closest('tr').find('td span.quantity').text()) - 1;
+    if (quiantity < 0) {
+        quiantity = 0;
+    }
+    var total = $(element).closest('tr').find('td.total').text(actual_price * quiantity);
+    $(value).closest('tr').find('td span.quantity').text(quiantity);
+    total_purchase()
+}
+function total_purchase() {
+    var total = $('.total'), sum = 0;
+    for (var i = 0; i < total.length; i++) {
+        sum += parseFloat($(total[i]).text());
+    }
+    $('#total-purch').text("$R " + sum);
 
+}
+function finish_purch() {
+    var response = confirm("Tu compra sera procesada");
+
+    if (response == true) {
+        $.post("php/place_order.php", function (response) {
+        }, "json").done(function (response) {
+            if (response.success == 1) {
+                $("#table-cart tr").remove();
+                toastr.success(response.msg);
+                window.location.replace("index.html");
+            }
+            else {
+                toastr.warning("Error in order");
+            }
+        }, 2000);
+
+
+    } else {
+
+    }
 }
 
 
