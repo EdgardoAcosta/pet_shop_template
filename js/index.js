@@ -21,7 +21,7 @@ function get_products() {
                 price = response['products'][i]['Price'];
                 stock = response['products'][i]['Stock'];
                 photo = response['products'][i]['Photo'];
-
+                //create row
                 if (cont == 0) {
                     $('#product-list').append('<div class="row products_list" id="row-prod' + aux + '" style="display: none">');
                     $('#row-prod' + aux).append('<div class="col-lg-4 col-md-6 ' + type + '" id="' + id + '"><div class="card">' +
@@ -34,6 +34,7 @@ function get_products() {
                         'data-placement="top" title="" onclick="add_product_to_cart(this)" class="addcart" > <i class="fa fa-cart-plus"></i> </a>' +
                         ' </span> </div> </div> </div> </div>');
                 }
+                //Append to row
                 else {
                     $('#row-prod' + aux).append('<div class="col-lg-4 col-md-6 ' + type + '" id="' + id + '"><div class="card">' +
                         '<div class="view overlay hm-white-slight"> <img src="' + photo + '"' +
@@ -46,99 +47,16 @@ function get_products() {
                         ' </span> </div> </div> </div> </div>');
                 }
                 cont++;
+                //Close row
                 if (cont >= 3) {
                     $('#product-list').append('</div>');
                     cont = 0;
                     aux++;
                 }
-                /*
-                 <div class="row ">
-                 <div class="col-md-12">
-                 <div class="col-lg-4 col-md-6">
-                 <div class="card">
-                 <div class="view overlay hm-white-slight">
-                 <img src="Images/Categories/Accessories/collar perro.jpg" alt="Collar para cachorro"
-                 class="img-fluid">
-                 </div>
-
-                 <div class="card-block">
-                 <h4 class="card-title"><strong>Collar para cachorro</strong></h4>
-
-                 <hr>
-
-                 <p class="card-text">Descrição do collar para cachorro.</p>
-
-                 <div class="card-footer">
-                 <span class="left">Stock: 40</span>
-                 <span class="right">
-                 <a href="#" data-original-title="Adicionar ao carrinho" type="button"
-                 data-toggle="tooltip" data-placement="top" title="">
-                 <i class="fa fa-cart-plus"></i>
-                 </a>
-                 </span>
-                 </div>
-                 </div>
-                 </div>
-                 </div>
-
-                 <div class="col-lg-4 col-md-6">
-                 <div class="card">
-                 <div class="view overlay hm-white-slight">
-                 <img src="Images/Categories/Accessories/kennei-trans-.jpg" alt="Casa para cachorro"
-                 class="img-fluid">
-                 </div>
-
-                 <div class="card-block">
-                 <h4 class="card-title"><strong>Casa para cachorro</strong></h4>
-
-                 <hr>
-
-                 <p class="card-text">Descrição da casa para cachorro.</p>
-
-                 <div class="card-footer">
-                 <span class="left">Stock: 15</span>
-                 <span class="right">
-                 <a href="#" data-original-title="Adicionar ao carrinho" type="button"
-                 data-toggle="tooltip" data-placement="top" title="">
-                 <i class="fa fa-cart-plus"></i>
-                 </a>
-                 </span>
-                 </div>
-                 </div>
-                 </div>
-                 </div>
-
-                 <div class="col-lg-4 col-md-6">
-                 <div class="card">
-                 <div class="view overlay hm-white-slight">
-                 <img src="Images/Categories/Accessories/plato para perro.jpg" alt="Prato para cachorro"
-                 class="img-fluid">
-                 </div>
-
-                 <div class="card-block">
-                 <h4 class="card-title"><strong>Prato para cachorro</strong></h4>
-
-                 <hr>
-
-                 <p class="card-text">Descrição do collar para cachorro.</p>
-
-                 <div class="card-footer">
-                 <span class="left">Stock: 40</span>
-                 <span class="right">
-                 <a href="#" data-original-title="Adicionar ao carrinho" type="button"
-                 data-toggle="tooltip" data-placement="top" title="">
-                 <i class="fa fa-cart-plus"></i>
-                 </a>
-                 </span>
-                 </div>
-                 </div>
-                 </div>
-                 </div>
-                 </div>
-                 </div>
-                 */
             }
+            //Show only the first row
             $('#row-prod0').show();
+            //Append button to show more
             $('#product-list').append('<div class="text-xs-center">' +
                 '<button type="button" class="btn light-blue darken-4" onclick="show_more();" id="show-more">Ver mais</button>' +
                 '<button type="button" class="btn light-blue darken-4" onclick="show_less();" id="show-less" style="display: none">Ver menos</button></div>');
@@ -154,6 +72,7 @@ function get_products() {
                 '<span class="left"></span> <span class="right">' +
                 ' </span> </div> </div> </div> </div></div>');
         }
+
 
     });
 }
@@ -210,11 +129,13 @@ $(document).ready(function () {
     }
 
     get_products();
+    //Disable adding more than 1 item to cart, in cart can be change the number of items
+    $(document).on('click', "a.addcart", function() {
+        event.preventDefault();
+        $(this).attr('style', 'pointer-events: none');
 
-
-    $('a.addcart').click(function () {
-        (this).css('pointer-events: none;');
-        alert("hola2");
+        //$(this).css('pointer-events', 'none;');
+       console.log($(this).id);
     });
 
 });

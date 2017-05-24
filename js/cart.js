@@ -28,8 +28,7 @@ function get_cart() {
                     ' data-original-title="Eliminar produto" type="button" data-toggle="tooltip"' +
                     ' data-placement="top" title="">x</button> </td></tr>');
             }
-            $("#table-cart").append('<tr"><td></td><td></td><td></td><td style="text-align: right" >Total</td><td id="total-purch"></td></tr>');
-            total_purchase();
+            $("#table-cart").append('<tr id="tr-Total"><td></td><td></td><td></td><td style="text-align: right" >Total</td><td id="total-purch"></td></tr>');
         }
         else {
 
@@ -67,25 +66,56 @@ function total_purchase() {
 
 }
 function finish_purch() {
-    var response = confirm("Tu compra sera procesada");
+   // var response = confirm("Tu compra sera procesada");
+    var data = [], rowData = {};
 
+    var id,sum, x = 0;
+    $("#table-cart tr").not('#tr-Total').each(function() {
+        id = $(this).attr("id");
+        sum = $("#"+id).closest('tr').find('td span.quantity').text();
+        rowData.Id = id;
+        rowData.quantity = sum;
+        //rowData.Id = id;
+        //rowData.quantity = sum;
+
+        //console.log(rowData);
+        data[x] = rowData;
+        console.log(x);
+        x++;
+    });
+    console.log(data);
+
+/*
     if (response == true) {
-        $.post("php/place_order.php", function (response) {
+        $("#table-cart tr").not('#tr-Total').each(function() {
+            id = $(this).attr("id");
+            sum = $("#"+id).closest('tr').find('td span.quantity').text();
+            rowData.Id = id;
+            rowData.quantity = sum;
+
+
+            console.log(id + " - " + sum);
+            console.log(rowData);
+            data.push(rowData);
+        });
+
+        $.post("php/stock.php",{"products":data, "action":"subtract"}, function (response) {
         }, "json").done(function (response) {
+            console.log(response);
             if (response.success == 1) {
+
                 $("#table-cart tr").remove();
                 toastr.success(response.msg);
-                window.location.replace("index.html");
+                //window.location.replace("index.html");
             }
             else {
                 toastr.warning("Error in order");
             }
-        }, 2000);
+        });
 
-
-    } else {
 
     }
+    */
 }
 
 
