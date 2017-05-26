@@ -124,7 +124,7 @@ function add_product_to_cart(element) {
 
 
         // Add some data
-        store.add({Id_Product: element_toadd,Name:name, Id_User: user,Description: "",Purch_Date: "",Active: "1"});
+        store.add({Id:element_toadd,Id_Product: element_toadd,Name:name, Id_User: user,Description: "",Purch_Date: "",Active: "1"});
         toastr.success("Added to cart");
 
         // Close the db when the transaction is done
@@ -143,13 +143,13 @@ function add_products_to_DB(open) {
 
         // Add some data
         const products = [
-            {Type: "dog", Name: "Collar para cachorro", Description: "Descrição do collar para cachorro.",
+            {Id: "1",Type: "dog", Name: "Collar para cachorro", Description: "Descrição do collar para cachorro.",
                 Price: "100",Stock: "30",Photo: "Images/Categories/Accessories/collar_perro.jpg"},
-            {Type: "cat", Name: "Casa para gato", Description: "Descrição da casa para gatos.",
+            {Id: "2",Type: "cat", Name: "Casa para gato", Description: "Descrição da casa para gatos.",
                 Price: "150",Stock: "40",Photo: "Images/Categories/Accessories/kennei-trans.jpg"},
-            {Type: "dog", Name: "Roupa do cão", Description: "Descrição roupa do cão.",
+            {Id: "3",Type: "dog", Name: "Roupa do cão", Description: "Descrição roupa do cão.",
                 Price: "200",Stock: "60",Photo: "Images/Categories/Clothing/logo.png"},
-            {Type: "cat", Name: "Descrição alimento de cão", Description: "Descrição da casa para gatos.",
+            {Id: "4",Type: "cat", Name: "Descrição alimento de cão", Description: "Descrição da casa para gatos.",
                 Price: "240",Stock: "110",Photo: "Images/Categories/Feeding/alimento8-alimento.jpg"}
         ];
 
@@ -200,13 +200,15 @@ function create_DB(open) {
     open.onupgradeneeded = function () {
         console.log("open");
         var db = open.result;
-        var store = db.createObjectStore("product", {keyPath: "Id", autoIncrement:true });
-        var index = store.createIndex("Index", ["Type", "Name", "Description", "Price", "Stock", "Photo"]);
+       // var store = db.createObjectStore("product", {keyPath: "Id", autoIncrement:true });
+        var store = db.createObjectStore("product", {keyPath: "Id"});
+        var index = store.createIndex("Index", ["Id","Type", "Name", "Description", "Price", "Stock", "Photo"]);
         store.createIndex("Name", "Name", { unique: true });
 
 
-        store = db.createObjectStore("cart", {keyPath: "Id", autoIncrement:true });
-        index = store.createIndex("Index", ["Id_Product","Name","Id_User", "Description", "Purch_Date", "Active"]);
+        //store = db.createObjectStore("cart", {keyPath: "Id", autoIncrement:true });
+        store = db.createObjectStore("cart", {keyPath: "Id"});
+        index = store.createIndex("Index", ["Id","Id_Product","Name","Id_User", "Description", "Purch_Date", "Active"]);
         store.createIndex('user_prod', ['Id_User','Active'], {unique:false});
 
 
