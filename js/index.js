@@ -3,31 +3,45 @@
  * Edgardo Acosta Leal: 1022755
  * José Richard Tejedo Vega: 10222991
  * */
+//<editor-fold desc="IDB">
+//prefixes of implementation that we want to test
+window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
+//prefixes of window.IDB objects
+window.IDBTransaction = window.IDBTransaction || window.webkitIDBTransaction || window.msIDBTransaction;
+window.IDBKeyRange = window.IDBKeyRange || window.webkitIDBKeyRange || window.msIDBKeyRange
+
+if (!window.indexedDB) {
+    window.alert("Your browser doesn't support a stable version of IndexedDB.")
+}
+if (!window.indexedDB) {
+    window.alert("Your browser doesn't support a stable version of IndexedDB.")
+}
+
+//</editor-fold>
 
 function get_products() {
-
-    $.post("php/get_products.php", {'action': 'get'}, function (response) {
-    }, "json").done(function (response) {
-        if (response.success == "1") {
-            var id, name, description, type, price, stock, photo;
-            var cont = 0, aux = 0;
-            for (var i = 0; i < response['products'].length; i++) {
-
-                id = response['products'][i]['Id'];
-                type = response['products'][i]['Type'];
-                name = response['products'][i]['Name'];
-                description = response['products'][i]['Description'];
-                price = response['products'][i]['Price'];
-                stock = response['products'][i]['Stock'];
-                photo = response['products'][i]['Photo'];
+    // Query the data
+    getAllItems(function (items) {
+        var len = items.length;
+        var id, name, description, type, price, stock, photo;
+        var cont = 0, aux = 0;
+        if (len > 0) {
+            for (var i = 0; i < len; i += 1) {
+                id = items[i]['Id'];
+                type = items[i]['Type'];
+                name = items[i]['Name'];
+                description = items[i]['Description'];
+                price = items[i]['Price'];
+                stock = items[i]['Stock'];
+                photo = items[i]['Photo'];
                 //create row
                 if (cont == 0) {
                     $('#product-list').append('<div class="row products_list" id="row-prod' + aux + '" style="display: none">');
                     $('#row-prod' + aux).append('<div class="col-lg-4 col-md-6 ' + type + '" id="' + id + '"><div class="card">' +
                         '<div class="view overlay hm-white-slight"> <img src="' + photo + '"' +
                         ' alt="' + name + '" class="img-fluid"></div><div class="card-block">' +
-                        '<h4 class="card-title"><strong>' + name + '</strong></h4> <hr> ' +
+                        '<h4 class="card-title"><strong class="product-name">' + name + '</strong></h4> <hr> ' +
                         '<p class="card-text">' + description + '</p><div class="card-footer">' +
                         '<span class="left">Stock: ' + stock + '</span> <span class="right">' +
                         '<a data-original-title="Adicionar ao carrinho" type="button" data-toggle="tooltip" ' +
@@ -39,7 +53,7 @@ function get_products() {
                     $('#row-prod' + aux).append('<div class="col-lg-4 col-md-6 ' + type + '" id="' + id + '"><div class="card">' +
                         '<div class="view overlay hm-white-slight"> <img src="' + photo + '"' +
                         ' alt="' + name + '" class="img-fluid"></div><div class="card-block">' +
-                        '<h4 class="card-title"><strong>' + name + '</strong></h4> <hr> ' +
+                        '<h4 class="card-title"><strong class="product-name">' + name + '</strong></h4> <hr> ' +
                         '<p class="card-text">' + description + '</p><div class="card-footer">' +
                         '<span class="left">Stock: ' + stock + '</span> <span class="right">' +
                         '<a data-original-title="Adicionar ao carrinho" type="button" data-toggle="tooltip" ' +
@@ -63,7 +77,6 @@ function get_products() {
 
         }
         else {
-            /*Error*/
             $('#product-list').append('<div class="row" id="error-list" style="display: ">' +
                 '<div class="col-lg-4 col-md-6"><div class="card">' +
                 '<div class="view overlay hm-white-slight"></div><div class="card-block">' +
@@ -72,9 +85,9 @@ function get_products() {
                 '<span class="left"></span> <span class="right">' +
                 ' </span> </div> </div> </div> </div></div>');
         }
-
-
     });
+
+
 }
 function show_more() {
     var show = document.getElementsByClassName('products_list'), i;
@@ -89,26 +102,118 @@ function show_less() {
     for (var i = 1; i < show.length; i++) {
         show[i].style.display = 'none';
     }
+    document.getElementById('show-more').style.display = 'block';
+    document.getElementById('show-less').style.display = 'none';
 }
 function add_product_to_cart(element) {
+    var name;
     var value = parseInt($('#num_of_products').text());
     $('#num_of_products').text(value + 1);
     var element_toadd = $(element).closest('.col-lg-4').attr('id');
+    name = $(element).closest('.col-lg-4').find('h4.card-title strong').text();
 
-    $.post("php/insert_to_cart.php", {'id': element_toadd}, function (response) {
-    }, "json").done(function (response) {
-        if (response.success == 1) {
-            toastr.success("Added");
+    //CHANGE TO ID OF USER IN SESSION
+    var user = 1;
+    var open = indexedDB.open("pet_shop", 1);
+    open.onsuccess = function () {
+        console.log("add_to_cart");
+        // Start a new transaction
+        var db = open.result;
+        var trans = db.transaction("cart", "readwrite");
+        var store = trans.objectStore("cart");
+
+
+        // Add some data
+        store.add({Id_Product: element_toadd,Name:name, Id_User: user,Description: "",Purch_Date: "",Active: "1"});
+        toastr.success("Added to cart");
+
+        // Close the db when the transaction is done
+        trans.oncomplete = function () {
+            db.close();
+        };
+    }
+}
+
+function add_products_to_DB(open) {
+    open.onsuccess = function () {
+        // Start a new transaction
+        var db = open.result;
+        var trans = db.transaction("product", "readwrite");
+        var store = trans.objectStore("product");
+
+        // Add some data
+        const products = [
+            {Type: "dog", Name: "Collar para cachorro", Description: "Descrição do collar para cachorro.",
+                Price: "100",Stock: "30",Photo: "Images/Categories/Accessories/collar_perro.jpg"},
+            {Type: "cat", Name: "Casa para gato", Description: "Descrição da casa para gatos.",
+                Price: "150",Stock: "40",Photo: "Images/Categories/Accessories/kennei-trans.jpg"},
+            {Type: "dog", Name: "Roupa do cão", Description: "Descrição roupa do cão.",
+                Price: "200",Stock: "60",Photo: "Images/Categories/Clothing/logo.png"},
+            {Type: "cat", Name: "Descrição alimento de cão", Description: "Descrição da casa para gatos.",
+                Price: "240",Stock: "110",Photo: "Images/Categories/Feeding/alimento8-alimento.jpg"}
+        ];
+
+        for (var i in products) {
+            store.add(products[i]);
         }
-        else {
-            toastr.warning("Error al guardar");
-        }
-    }).fail(function (xhr) {
-        console.log(xhr);
-    });
+
+        // Close the db when the transaction is done
+        trans.oncomplete = function () {
+            db.close();
+        };
+
+    }
 
 }
 
+function getAllItems(callback) {
+    var open = indexedDB.open("pet_shop", 1);
+    open.onsuccess = function () {
+        var db = open.result;
+        var trans = db.transaction("product", "readwrite");
+        var store = trans.objectStore("product");
+        var items = [];
+
+        trans.oncomplete = function (evt) {
+            callback(items);
+        };
+
+        var cursorRequest = store.openCursor();
+
+        cursorRequest.onerror = function (error) {
+            console.log(error);
+        };
+
+        cursorRequest.onsuccess = function (evt) {
+            var cursor = evt.target.result;
+            if (cursor) {
+                items.push(cursor.value);
+                cursor.continue();
+            }
+        };
+    }
+}
+
+function create_DB(open) {
+
+    // Create the schema
+    open.onupgradeneeded = function () {
+        console.log("open");
+        var db = open.result;
+        var store = db.createObjectStore("product", {keyPath: "Id", autoIncrement:true });
+        var index = store.createIndex("Index", ["Type", "Name", "Description", "Price", "Stock", "Photo"]);
+        store.createIndex("Name", "Name", { unique: true });
+
+
+        store = db.createObjectStore("cart", {keyPath: "Id", autoIncrement:true });
+        index = store.createIndex("Index", ["Id_Product","Name","Id_User", "Description", "Purch_Date", "Active"]);
+        store.createIndex('user_prod', ['Id_User','Active'], {unique:false});
+
+
+
+    };
+
+}
 $(document).ready(function () {
     toastr.options = {
         "closeButton": false,
@@ -128,14 +233,22 @@ $(document).ready(function () {
         "hideMethod": "fadeOut"
     }
 
+    // Open (or create) the database
+    var open = indexedDB.open("pet_shop", 1);
+    create_DB(open);
+    add_products_to_DB(open);
     get_products();
-    //Disable adding more than 1 item to cart, in cart can be change the number of items
-    $(document).on('click', "a.addcart", function() {
-        event.preventDefault();
-        $(this).attr('style', 'pointer-events: none');
 
-        //$(this).css('pointer-events', 'none;');
-       console.log($(this).id);
+
+
+
+
+
+//Disable adding more than 1 item to cart, in cart can be change the number of items
+    $(document).on('click', "a.addcart", function () {
+        $(this).attr('style', 'pointer-events: none');
     });
+
+
 
 });
