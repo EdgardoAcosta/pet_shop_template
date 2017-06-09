@@ -194,28 +194,216 @@ function getAllItems(callback) {
     }
 }
 
+function add_user_toDB() {
+	// Add some data
+	const data = [
+		{
+			Id: "1",
+			Type: "0",
+			Name: "Ana",
+			Phone: "+5511659566351",
+			Email: "ana@gmail.com",
+			Address: "...",
+			Photo: "images/users/798744243.jpg"
+		},
+
+		{
+			Id: "2",
+			Type: "0",
+			Name: "Sakura",
+			Phone: "+5511659566351",
+			Email: "sakura@gmail.com",
+			Address: "...",
+			Photo: "images/users/763243241.jpg"
+		},
+
+		{
+			Id: "3",
+			Type: "1",
+			Name: "Roberto",
+			Phone: "+5511659566351",
+			Email: "roberto@gmail.com",
+			Address: "...",
+			Photo: "images/users/7365432423.jpg"
+		}
+	];
+
+	add_to("user", data, "users added");
+}
+
+function add_pet_toDB() {
+	// Add some data
+	const data = [
+		{
+			Id: "1",
+			Name: "Boby",
+			Age: "3 años",
+			Race: "...",
+			Photo: "images/pets/432413123.jpg",
+			Id_User: "1"
+		},
+
+		{
+			Id: "2",
+			Name: "Guffy",
+			Age: "3 años",
+			Race: "...",
+			Photo: "images/pets/654654654.jpg",
+			Id_User: "1"
+		},
+
+		{
+			Id: "3",
+			Name: "Spak",
+			Age: "2 años",
+			Race: "...",
+			Photo: "images/pets/554564654.jpg",
+			Id_User: "2"
+		},
+
+		{
+			Id: "4",
+			Name: "Docky",
+			Age: "1 años",
+			Race: "...",
+			Photo: "images/pets/698593458.jpg",
+			Id_User: "2"
+		}
+	];
+
+	add_to("pet", data, "pets added");
+}
+
+function add_calendar_toDB() {
+	// Add some data
+	const data = [
+		{
+			Id: "01",
+			Id_Service: "1",
+			Id_Pet: "0",
+			Date: "2017-07-10T08:00"
+		},
+
+		{
+			Id: "02",
+			Id_Service: "2",
+			Id_Pet: "1",
+			Date: "2017-07-10T09:30"
+		},
+
+		{
+			Id: "03",
+			Id_Service: "1",
+			Id_Pet: "4",
+			Date: "2017-07-10T10:10"
+		},
+
+		{
+			Id: "04",
+			Id_Service: "3",
+			Id_Pet: "0",
+			Date: "2017-07-10T11:00"
+		},
+
+		{
+			Id: "05",
+			Id_Service: "3",
+			Id_Pet: "3",
+			Date: "2017-07-10T11:45"
+		},
+
+		{
+			Id: "06",
+			Id_Service: "1",
+			Id_Pet: "2",
+			Date: "2017-07-10T12:20"
+		},
+
+		{
+			Id: "07",
+			Id_Service: "1",
+			Id_Pet: "0",
+			Date: "2017-07-10T13:10"
+		},
+
+		{
+			Id: "08",
+			Id_Service: "1",
+			Id_Pet: "0",
+			Date: "2017-07-10T14:00"
+		},
+
+		{
+			Id: "09",
+			Id_Service: "1",
+			Id_Pet: "0",
+			Date: "2017-07-10T15:30"
+		},
+
+		{
+			Id: "10",
+			Id_Service: "1",
+			Id_Pet: "0",
+			Date: "2017-07-10T16:45"
+		}
+	];
+
+	add_to("calendar", data, "calendar table added");
+}
+
 function create_DB(open) {
 
     // Create the schema
     open.onupgradeneeded = function () {
         console.log("open");
-        var db = open.result;
-       // var store = db.createObjectStore("product", {keyPath: "Id", autoIncrement:true });
-        var store = db.createObjectStore("product", {keyPath: "Id"});
-        var index = store.createIndex("Index", ["Id","Type", "Name", "Description", "Price", "Stock", "Photo"]);
-        store.createIndex("Name", "Name", { unique: true });
+		var db = open.result;
+		// var store = db.createObjectStore("product", {keyPath: "Id", autoIncrement:true });
+		var store = db.createObjectStore("product", {keyPath: "Id"});
+		var index = store.createIndex("Index", ["Id","Type", "Name", "Description", "Price", "Stock", "Photo", "Id_Category"]);
+		store.createIndex("by_id", "Id", { unique: true });
 
+		console.log("products table created");
 
-        //store = db.createObjectStore("cart", {keyPath: "Id", autoIncrement:true });
-        store = db.createObjectStore("cart", {keyPath: "Id"});
-        index = store.createIndex("Index", ["Id","Id_Product","Name","Id_User", "Description", "Purch_Date", "Active"]);
-        store.createIndex('user_prod', ['Id_User','Active'], {unique:false});
+		//store = db.createObjectStore("cart", {keyPath: "Id", autoIncrement:true });
+		store = db.createObjectStore("cart", {keyPath: "Id"});
+		index = store.createIndex("Index", ["Id","Id_Product","Name","Id_User", "Description", "Purch_Date", "Active"]);
+		store.createIndex("by_id", "Id", { unique: true });
+		store.createIndex('user_prod', ['Id_User','Active'], {unique:false});
 
+		console.log("cart table created");
 
+		store = db.createObjectStore("category", {keyPath: "Id"});
+		index = store.createIndex("Index", ["Id","Name", "Photo"]);
+		store.createIndex('by_id', 'Id', {unique: true});
 
+		console.log("categories table created");
+
+		store = db.createObjectStore("service", {keyPath: "Id"});
+		index = store.createIndex("Index", ["Id", "Name","Description", "Price", "Photo"]);
+		store.createIndex("by_id", "Id", { unique: true });
+
+		console.log("services table created");
+
+		store = db.createObjectStore("user", {keyPath: "Id"});
+		index = store.createIndex("Index", ["Id", "Type", "Name","Phone", "Email", "Address", "Photo"]);
+		store.createIndex("by_id", "Id", { unique: true });
+
+		console.log("users table created");
+
+		store = db.createObjectStore("pet", {keyPath: "Id"});
+		index = store.createIndex("Index", ["Id", "Name", "Age", "Race", "Photo", "Id_User"]);
+		store.createIndex("by_id", "Id", { unique: true });
+
+		console.log("pets table created");
+
+		store = db.createObjectStore("calendar", {keyPath: "Id"});
+		index = store.createIndex("Index", ["Id", "Id_Service","id_Pet", "Date"]);
+		store.createIndex("by_id", "Id", { unique: true });
+
+		console.log("calendar table created");
     };
-
 }
+
 $(document).ready(function () {
     toastr.options = {
         "closeButton": false,
@@ -240,17 +428,12 @@ $(document).ready(function () {
     create_DB(open);
     add_products_to_DB(open);
     get_products();
-
-
-
-
-
+	add_user_toDB();
+	add_pet_toDB();
+	add_calendar_toDB();
 
 //Disable adding more than 1 item to cart, in cart can be change the number of items
     $(document).on('click', "a.addcart", function () {
         $(this).attr('style', 'pointer-events: none');
     });
-
-
-
 });
