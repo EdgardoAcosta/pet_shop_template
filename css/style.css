@@ -16,9 +16,7 @@
 	top: 0;
 	left: 0;
 	z-index: 1;
-}
-
-.calendar .calendar-main > div {
+}.calendar .calendar-main > div {
 	position: relative;
 	overflow: hidden;
 	padding: 5px 5px;
@@ -28,6 +26,12 @@
 .calendar .calendar-main .name-month h1 {
 	text-align: center;
 	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.calendar .calendar-main .name-month h4 {
+	text-align: center;
+	font-size: 12px;
 	text-transform: uppercase;
 }
 
@@ -65,7 +69,7 @@
 
 .calendar .calendar-main .date-days .date-row div {
 	float: left;
-	height: 70px;
+	height: 50px;
 	width: 14.285%;
 	display: inline-block;
 }
@@ -74,75 +78,48 @@
 	float: left;
 	width: 14.285%;
 	text-align: center;
+	line-height: 50px;
 	color: black;
 	position: relative;
-	height: 70px;
+	height: 50px;
 }
 
-.calendar .calendar-main .date-days  a.full-day,  .calendar .calendar-main .date-days  a.not-full-day{
+.calendar .calendar-main .date-row a.selected {
+	border: 5px solid rgba(54, 54, 54 , .7);
+	line-height: 40px;
+}
+
+.calendar .calendar-main .date-row a.selected:hover {
+	background: transparent !important;
+}
+
+.calendar .calendar-main .date-row a:hover:not(.disabled) {
+	background: rgba(195, 195, 195, .5);
+}
+
+a.disabled, a.disabled i {
+	color: rgba(105, 105, 105, .3) !important;
+	cursor: default;
+}
+
+.calendar .calendar-main .date-days  a {
+	text-decoration: none;
+}
+
+.calendar .calendar-main .date-days  a.full-day, .calendar .calendar-main .date-days  a.not-full-day{
 	color: white;
-}
-
-.calendar .calendar-main .date-days  a.selected-day {
-	background: rgba(137, 137, 138, .3);
 }
 
 .calendar .calendar-main .date-days  a.full-day:before {
 	content: "";
-	width: 60px;
-	height: 60px;
+	width: 40px;
+	height: 40px;
 	position: absolute;
 	border-radius: 100%;
 	background: rgb(255, 38, 134);
-	left: calc(50% - 30px);
-	top: calc(50% - 30px);
+	left: calc(50% - 20px);
+	top: calc(50% - 20px);
 	z-index: -1;
-}
-
-@media  (max-width: 450px) {
-	.calendar .calendar-main .date-days  a.full-day:before {
-		content: "";
-		width: 40px;
-		height: 40px;
-		position: absolute;
-		border-radius: 100%;
-		background: rgb(255, 38, 134);
-		left: calc(50% - 20px);
-		top: calc(50% - 20px);
-		z-index: -1;
-	}
-}
-
-.calendar .legend > div {
-	position: relative;
-	margin: 15px 0;
-	padding: 15px 0;
-}
-
-.calendar .legend .bar-full-day:before {
-	content: "";
-	width: calc(25% + 10px);
-	height: 30px;
-	background: rgb(255, 38, 134);
-	position: absolute;
-	left: -23px;
-	bottom: 8px;
-	border-top-right-radius: 15px;
-	border-bottom-right-radius: 15px;
-}
-
-.calendar .legend .bar-full-day span {
-	color: rgb(145, 31, 99);
-}
-
-.calendar .legend .bar-not-full-day span {
-	color: rgb(31, 99, 145);
-}
-
-.calendar .legend span {
-	position: relative;
-	font-size: 14px;
-	left: calc(25% + 10px);
 }
 
 table img {
