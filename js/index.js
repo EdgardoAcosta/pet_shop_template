@@ -438,7 +438,7 @@ function create_DB(open) {
 		console.log("services table created");
 
 		store = db.createObjectStore("user", {keyPath: "Id"});
-		index = store.createIndex("Index", ["Id", "Type", "Name","Phone", "Email", "Address", "Photo"]);
+		index = store.createIndex("Index", ["Id", "Type", "Password", "Name","Phone", "Email", "Address", "Photo"]);
 		store.createIndex("by_id", "Id", { unique: true });
 
 		console.log("users table created");
@@ -561,6 +561,33 @@ function register_product() {
     });
 }
 
+function register_service() {
+    $("#reg_service").click(function() {
+        var open = indexedDB.open("pet_shop", 1);
+
+        open.onsuccess = function() {
+            var dataArray = $("#register_service").serializeArray();
+            var data = {};
+
+            $(dataArray).each(function(i, field) {
+                data[field.name] = field.value;
+            });
+
+            var db = open.result;
+
+            var transaction = db.transaction(["service"], "readwrite");
+
+            var objectStore = transaction.objectStore("service");
+            var request = objectStore.add({ Id: data['id'], Name: data['nome'], Description: data['descricao'], Price: data['preco'], Photo: data['photo']});
+
+            request.onsuccess = (e) => {
+                alert("Servico cadastrado");
+            }
+        }
+    });
+}
+
+
 $(document).ready(function () {
     toastr.options = {
         "closeButton": false,
@@ -592,6 +619,7 @@ $(document).ready(function () {
     register_admin();
     register_client();
     register_product();
+    register_service();
 	
     $('.mdb-select').material_select();
 //Disable adding more than 1 item to cart, in cart can be change the number of items
