@@ -19,6 +19,28 @@ if (!window.indexedDB) {
 }
 
 //</editor-fold>
+//
+function add_to(table, data, message = "added") {
+    var open = indexedDB.open("pet_shop", 1);
+
+    open.onsuccess = function () {
+        // Start a new transaction
+        var db = open.result;
+        var trans = db.transaction(table, "readwrite");
+        var store = trans.objectStore(table);
+
+        for (let i in data) {
+            store.add(data[i]);
+        }
+
+        // Close the db when the transaction is done
+        trans.oncomplete = function () {
+            db.close();
+        };
+
+        console.log(message);
+    };
+}
 
 function get_products() {
     // Query the data
@@ -351,6 +373,37 @@ function add_calendar_toDB() {
 	add_to("calendar", data, "calendar table added");
 }
 
+function add_service_toDB() {
+    // Add some data
+    const data = [
+        {
+            Id: "1",
+            Name: "Banhos",
+            Description: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.",
+            Price: "45.50",
+            Photo: "images/services/510231231.jpg"
+        },
+
+        {
+            Id: "2",
+            Name: "Corte de unhas",
+            Description: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.",
+            Price: "75.80",
+            Photo: "images/services/5012412032.png"
+        },
+
+        {
+            Id: "3",
+            Name: "Corte de cabelo",
+            Description: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.",
+            Price: "90.40",
+            Photo: "images/services/54331234.jpg"
+        }
+    ];
+
+    add_to("service", data, "services added");
+}
+
 function create_DB(open) {
 
     // Create the schema
@@ -428,9 +481,10 @@ $(document).ready(function () {
     create_DB(open);
     add_products_to_DB(open);
     get_products();
-	add_user_toDB();
-	add_pet_toDB();
-	add_calendar_toDB();
+    add_user_toDB();
+    add_pet_toDB();
+    add_calendar_toDB();
+    add_service_toDB();
 
 //Disable adding more than 1 item to cart, in cart can be change the number of items
     $(document).on('click', "a.addcart", function () {
