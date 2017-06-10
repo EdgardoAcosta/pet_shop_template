@@ -119,40 +119,42 @@
 		        </div>
 
 		        <!--Body-->
-		        <div class="md-form">
-		            <i class="fa fa-shopping-bag prefix"></i>
-		            <input type="text" id="nome" class="form-control" value="Prato de cachorro">
-		        </div>
+		        <form id="edit_product" enctype="multipart/form-data" method="post">
+			        <div class="md-form">
+			            <i class="fa fa-shopping-bag prefix"></i>
+			            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>
+			        </div>
 
-				<div class="md-form">
-				    <i class="fa fa-pencil prefix"></i>
-				    <textarea type="text" id="descricao" class="md-textarea" placeholder="Descrição">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta ullam dicta, quia sapiente magni, impedit libero aut iste odit excepturi laborum blanditiis illum nisi officiis asperiores qui dolorem labore id!
+			        <div class="md-form">
+			            <i class="fa fa-paw prefix"></i>
+			            <input type="text" name="tipo" id="tipo" class="form-control" placeholder="Tipo" required>
+			        </div>
 
-				    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta ullam dicta, quia sapiente magni, impedit libero aut iste odit excepturi laborum blanditiis illum nisi officiis asperiores qui dolorem labore id!
-				    </textarea>
-				 </div>
+					<div class="md-form">
+					    <i class="fa fa-pencil prefix"></i>
+					    <textarea type="text" id="descricao" name="descricao" class="md-textarea" placeholder="Descrição" required></textarea>
+					 </div>
 
-		        <div class="md-form">
-				     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
-				     <input type="file">
-				     <input type="text" value="prato.jpg">
-			    </div>
+			        <div class="md-form">
+					     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
+					     <input type="file">
+					     <input type="text" name="photo" id="photo" placeholder="Foto" required>
+				    </div>
 
+			        <div class="md-form">
+			            <i class="fa fa-money prefix"></i>
+			            <input type="text" id="preco" name="preco" class="form-control" placeholder="Preço" required>
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-money prefix"></i>
-		            <input type="text" id="preco" class="form-control" value="50.75">
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-calculator prefix"></i>
+			            <input type="text" id="quantidade" name="quantidade" class="form-control" placeholder="Quantidade" required>
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-calculator prefix"></i>
-		            <input type="text" id="quantidade" class="form-control" value="50">
-		        </div>
-
-		        <div class="text-center offset-lg-5">
-		            <button class="btn btn-dark-green">Cadastrar</button>
-		        </div>
-
+			        <div class="text-center offset-lg-5">
+			            <button class="btn btn-dark-green" type="submit" name="ed_product" id="ed_product">Editar</button>
+			        </div>
+				</form>
 		    </div>
 		</div>
 		<!--/Form with header-->
@@ -227,5 +229,8 @@
 			<!--/.Copyright-->
 		</footer>
 		<!--/.Footer-->
+		<script src="../../js/jquery-2.2.3.min.js"></script>
+		<script src="../../js/edit_product.js"></script>
+		<script src="../../js/mdb.min.js"></script>
 	</body>
 </html>

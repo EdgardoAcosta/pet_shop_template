@@ -119,32 +119,38 @@
 		        </div>
 
 		        <!--Body-->
-		        <div class="md-form">
-		            <i class="fa fa-shopping-bag prefix"></i>
-		            <input type="text" id="nome" class="form-control" placeholder="Nome">
-		        </div>
+		        <form id="register_service" enctype="multipart/form-data" method="post">
+			        <div class="md-form">
+			            <i class="fa fa-shopping-bag prefix"></i>
+			            <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" required>
+			        </div>
 
-				<div class="md-form">
-				    <i class="fa fa-pencil prefix"></i>
-				    <textarea type="text" id="descricao" class="md-textarea" placeholder="Descrição"></textarea>
-				 </div>
+					<div class="md-form">
+			            <i class="fa fa-paw prefix"></i>
+			            <input type="text" id="tipo" name="tipo" class="form-control" placeholder="Tipo" required>
+			        </div>			        
 
-		        <div class="md-form">
-				     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
-				     <input type="file">
-				     <input type="text" placeholder="Photo">
-			    </div>
+					<div class="md-form">
+					    <i class="fa fa-pencil prefix"></i>
+					    <textarea type="text" name="descricao" id="descricao" class="md-textarea" placeholder="Descrição" required></textarea>
+					 </div>
+
+			        <div class="md-form">
+					     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
+					     <input type="file">
+					     <input type="text" id="photo" name="photo" placeholder="Photo" required>
+				    </div>
 
 
-		        <div class="md-form">
-		            <i class="fa fa-money prefix"></i>
-		            <input type="text" id="preco" class="form-control" placeholder="Preço">
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-money prefix"></i>
+			            <input type="text" name="preco" id="preco" class="form-control" placeholder="Preço" required>
+			        </div>
 
-		        <div class="text-center offset-lg-5">
-		            <button class="btn btn-dark-green">Cadastrar</button>
-		        </div>
-
+			        <div class="text-center offset-lg-5">
+			            <button class="btn btn-dark-green" type="submit" id="reg_service" name="reg_service">Cadastrar</button>
+			        </div>
+				</form>
 		    </div>
 		</div>
 		<!--/Form with header-->
@@ -219,4 +225,7 @@
 			<!--/.Copyright-->
 		</footer>
 		<!--/.Footer-->
+		<script src="../../js/jquery-2.2.3.min.js"></script>
+		<script src="../../js/register_service.js"></script>
+		<script src="../../js/mdb.min.js"></script>
 	</body>
