@@ -457,6 +457,110 @@ function create_DB(open) {
     };
 }
 
+function register_admin() {
+    $('#reg_admin').click(function() {
+
+        var open = indexedDB.open("pet_shop", 1);
+
+        open.onsuccess = function () {
+            var dataArray = $('#register_admin').serializeArray();
+            var data = {};
+
+            $(dataArray).each(function(i, field) {
+                data[field.name] = field.value;
+            });
+
+            var db = open.result;
+
+            var transaction = db.transaction(["user"], "readonly");
+            var objectStore = transaction.objectStore("user");
+            var ob = objectStore.get(data['id']);
+
+            ob.onsuccess = (e) => {
+                var result = e.target.result;
+                
+                if (!result) {
+                    var transaction = db.transaction(["user"], "readwrite");
+
+                    var objectStore = transaction.objectStore("user");
+                    var request = objectStore.add({ Id: data['id'], Type: 'admin', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email']});
+
+                    request.onsuccess = (e) => {
+                        alert("Administrador cadastrado.");
+                    }
+                } else alert("O id já está sendo usado. Use outro.");
+            }  
+        };
+        
+    });
+}
+
+function register_client() {
+    $('#reg_client').click(function() {
+
+        var open = indexedDB.open("pet_shop", 1);
+
+        open.onsuccess = function () {
+            var dataArray = $('#register_client').serializeArray();
+            var data = {};
+
+            $(dataArray).each(function(i, field) {
+                data[field.name] = field.value;
+            });
+
+            var db = open.result;
+
+            var transaction = db.transaction(["user"], "readonly");
+            var objectStore = transaction.objectStore("user");
+            var ob = objectStore.get(data['id']);
+
+            ob.onsuccess = (e) => {
+                var result = e.target.result;
+                
+                if (!result) {
+                    var transaction = db.transaction(["user"], "readwrite");
+
+                    var objectStore = transaction.objectStore("user");
+                    var request = objectStore.add({ Id: data['id'], Type: 'client', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email'], Address: data['endereco']});
+
+                    request.onsuccess = (e) => {
+                        alert("Cliente cadastrado.");
+                    }
+                } else alert("O id já está sendo usado. Use outro.");
+            }  
+        };
+        
+    });
+}
+
+function register_product() {
+
+    $("#reg_product").click(function() {
+
+        var open = indexedDB.open("pet_shop", 1);
+
+        open.onsuccess = function () {
+            var dataArray = $("#register_product").serializeArray();
+            var data = {};
+
+            $(dataArray).each(function(i, field) {
+                data[field.name] = field.value;
+            });
+
+            var db = open.result;
+            
+            var transaction = db.transaction(["product"], "readwrite");
+
+            var objectStore = transaction.objectStore("product");
+            var request = objectStore.add({ Id: data['id'], Type: data['tipo'], Name: data['nome'], Description: data['descricao'], Price: data['preco'], Stock: data['quantidade'], Photo: data['photo']});
+
+            request.onsuccess = (e) => {
+                alert("Produto cadastrado");
+            }
+        };
+    });
+}
+
 $(document).ready(function () {
     toastr.options = {
         "closeButton": false,
@@ -485,7 +589,11 @@ $(document).ready(function () {
     add_pet_toDB();
     add_calendar_toDB();
     add_service_toDB();
-
+    register_admin();
+    register_client();
+    register_product();
+	
+    $('.mdb-select').material_select();
 //Disable adding more than 1 item to cart, in cart can be change the number of items
     $(document).on('click', "a.addcart", function () {
         $(this).attr('style', 'pointer-events: none');
