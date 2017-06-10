@@ -20,7 +20,6 @@
 		<link href="../css/mdb.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" href="../css/style.css">
-
 	</head>
 
 	<body class="fixed-sn green-skin">
@@ -143,41 +142,41 @@
 								<!--/.Table body-->
 							</table>
 							<!--/.Reservation table-->
+
+							<div id="pet-modal" class="modal-lg fade" tabindex="-1" role="dialog" aria-labelledby="pet-modal" aria-hidden="true">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="close">
+												<span aria-hidden="true"><i class="fa fa-times"></i></span>
+											</button>
+
+											<h4 class="modal-title w-100">Seus Pets</h4>
+										</div>
+
+										<div class="modal-body">
+											<table class="table-responsive">
+												<thead>
+													<tr>
+														<th></th>
+														<th>Pet</th>
+														<th>Nome</th>
+													</tr>
+												</thead>
+
+												<tbody id="pet-table">
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 					<!--/.Second column-->
 				</div>
 			</div>
 		</main>
-
-		<div id="pet-modal" class="modal-lg fade" tabindex="1" role="dialog" aria-labelledby="pet-modal" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="close">
-							<span aria-hidden="true"><i class="fa fa-times"></i></span>
-						</button>
-
-						<h4 class="modal-title w-100">Seus Pets</h4>
-					</div>
-
-					<div class="modal-body">
-						<table class="centered responsive-table">
-							<thead>
-								<tr>
-									<th></th>
-									<th>Pet</th>
-									<th>Nome</th>
-								</tr>
-							</thead>
-
-							<tbody id="pet-table">
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!--Footer-->
 		<footer class="page-footer center-on-small-only">
