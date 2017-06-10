@@ -61,6 +61,41 @@ function removeService(element) {
 	};
 }
 
+function setUser() {
+	var element = $('#pet-table');
+
+	var open = indexedDB.open("pet_shop", 1);
+
+	open.onsuccess = function(event) {
+		var db = event.target.result;
+
+		db.transaction("user").objectStore("user").get("1").onsuccess = function(evt) {
+			 $('li[id^="user-li"]').append('<a href="user/index.html"><i class="fa fa-user-circle"></i> ' + evt.target.result.Name + '</a>');
+
+			 db.transaction("pet", "readwrite").objectStore("pet").openCursor().onsuccess = function(evt) {
+			 	var cursor = evt.target.result;
+
+			 	if (cursor && cursor.value.Id_User == '1') {
+			 		element.append(
+			 			'<tr>' +
+			 				'<td>' +
+			 					'<button class="close btn btn-floating blue accent-3 adder-pet" data-dismiss="modal" aria-label="close" type="button" data-id="' + cursor.key + '"' +
+			 					'onclick="updateReservation(this)">' +
+			 						'<i class="fa fa-plus fa-2x"></i>' +
+			 					'</button>' +
+		 					'</td>' +
+			 				'<td><img src="../' + cursor.value.Photo + '"></td>' +
+			 				'<td>' + cursor.value.Name + '</td>' +
+			 			'</tr>'
+		 			);
+
+		 			cursor.continue();
+			 	}
+			 };
+		};
+	};
+}
+
 function updateReservation(element) {
 	var idPet = $(element).data('id');
 
@@ -206,7 +241,7 @@ function selectedDay(day, month, year) {
 										html += 
 											'<td>' +
 												'<a href="#" class="btn btn-floating waves-effect wave-light blue accent-3" data-id="' + id +'"' +
-												'onclick="updateService(this)" data-toggle="modal" data-target="#pet-modal">' +
+												'onclick="updateService(this)" data-toggle="modal" data-target="#pet-modal" data-backdrop="false">' +
 													'<i class="fa fa-pencil"></i>' +
 												'</a>' +
 
@@ -270,6 +305,7 @@ function selectDay() {
 }
 
 $(document).ready(function() {
+	setUser();
 	createCalendarOf();
 	changeCalender();
 	selectDay();
