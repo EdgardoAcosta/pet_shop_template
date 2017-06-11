@@ -166,13 +166,13 @@ function add_products_to_DB(open) {
         // Add some data
         const products = [
             {Id: "1",Type: "dog", Name: "Collar para cachorro", Description: "Descrição do collar para cachorro.",
-                Price: "100",Stock: "30",Photo: "Images/Categories/Accessories/collar_perro.jpg"},
+                Price: "100",Stock: "30",Photo: "../..Images/Categories/Accessories/collar_perro.jpg"},
             {Id: "2",Type: "cat", Name: "Casa para gato", Description: "Descrição da casa para gatos.",
-                Price: "150",Stock: "40",Photo: "Images/Categories/Accessories/kennei-trans.jpg"},
+                Price: "150",Stock: "40",Photo: "../../Images/Categories/Accessories/kennei-trans.jpg"},
             {Id: "3",Type: "dog", Name: "Roupa do cão", Description: "Descrição roupa do cão.",
-                Price: "200",Stock: "60",Photo: "Images/Categories/Clothing/logo.png"},
+                Price: "200",Stock: "60",Photo: "../../Images/Categories/Clothing/logo.png"},
             {Id: "4",Type: "cat", Name: "Descrição alimento de cão", Description: "Descrição da casa para gatos.",
-                Price: "240",Stock: "110",Photo: "Images/Categories/Feeding/alimento8-alimento.jpg"}
+                Price: "240",Stock: "110",Photo: "../../Images/Categories/Feeding/alimento8-alimento.jpg"}
         ];
 
         for (var i in products) {
@@ -457,189 +457,6 @@ function create_DB(open) {
     };
 }
 
-function register_admin() {
-    $('#reg_admin').click(function() {
-
-        var open = indexedDB.open("pet_shop", 1);
-
-        open.onsuccess = function () {
-            var dataArray = $('#register_admin').serializeArray();
-            var data = {};
-
-            $(dataArray).each(function(i, field) {
-                data[field.name] = field.value;
-            });
-
-            var db = open.result;
-
-            var transaction = db.transaction(["user"], "readonly");
-            var objectStore = transaction.objectStore("user");
-            var ob = objectStore.get(data['id']);
-
-            ob.onsuccess = (e) => {
-                var result = e.target.result;
-                
-                if (!result) {
-                    var transaction = db.transaction(["user"], "readwrite");
-
-                    var objectStore = transaction.objectStore("user");
-                    var request = objectStore.add({ Id: data['id'], Type: 'admin', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email']});
-
-                    request.onsuccess = (e) => {
-                        alert("Administrador cadastrado.");
-                    }
-                } else alert("O id já está sendo usado. Use outro.");
-            }  
-        };
-        
-    });
-}
-
-function register_client() {
-    $('#reg_client').click(function() {
-
-        var open = indexedDB.open("pet_shop", 1);
-
-        open.onsuccess = function () {
-            var dataArray = $('#register_client').serializeArray();
-            var data = {};
-
-            $(dataArray).each(function(i, field) {
-                data[field.name] = field.value;
-            });
-
-            var db = open.result;
-
-            var transaction = db.transaction(["user"], "readonly");
-            var objectStore = transaction.objectStore("user");
-            var ob = objectStore.get(data['id']);
-
-            ob.onsuccess = (e) => {
-                var result = e.target.result;
-                
-                if (!result) {
-                    var transaction = db.transaction(["user"], "readwrite");
-
-                    var objectStore = transaction.objectStore("user");
-                    var request = objectStore.add({ Id: data['id'], Type: 'client', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email'], Address: data['endereco']});
-
-                    request.onsuccess = (e) => {
-                        alert("Cliente cadastrado.");
-                    }
-                } else alert("O id já está sendo usado. Use outro.");
-            }  
-        };
-        
-    });
-}
-
-function register_product() {
-
-    $("#reg_product").click(function() {
-
-        var open = indexedDB.open("pet_shop", 1);
-
-        open.onsuccess = function () {
-            var dataArray = $("#register_product").serializeArray();
-            var data = {};
-
-            $(dataArray).each(function(i, field) {
-                data[field.name] = field.value;
-            });
-
-            var db = open.result;
-            
-            var transaction = db.transaction(["product"], "readwrite");
-
-            var objectStore = transaction.objectStore("product");
-            var request = objectStore.add({ Id: data['id'], Type: data['tipo'], Name: data['nome'], Description: data['descricao'], Price: data['preco'], Stock: data['quantidade'], Photo: data['photo']});
-
-            request.onsuccess = (e) => {
-                alert("Produto cadastrado");
-            }
-        };
-    });
-}
-
-function register_service() {
-    $("#reg_service").click(function() {
-        var open = indexedDB.open("pet_shop", 1);
-
-        open.onsuccess = function() {
-            var dataArray = $("#register_service").serializeArray();
-            var data = {};
-
-            $(dataArray).each(function(i, field) {
-                data[field.name] = field.value;
-            });
-
-            var db = open.result;
-
-            var transaction = db.transaction(["service"], "readwrite");
-
-            var objectStore = transaction.objectStore("service");
-            var request = objectStore.add({ Id: data['id'], Name: data['nome'], Description: data['descricao'], Price: data['preco'], Photo: data['photo']});
-
-            request.onsuccess = (e) => {
-                alert("Servico cadastrado");
-            }
-        }
-    });
-}
-
-function list_products() {
-    var open = indexedDB.open("pet_shop", 1);
-
-    open.onsuccess = function() {
-        var db = open.result;
-
-        var transaction = db.transaction("product", "readonly");
-        var objectStore = transaction.objectStore("product");
-
-        transaction.oncomplete = (e) => {
-            $(".del_product").click(function() {
-                var id = $(this).data("id");
-                var request = db.transaction(["product"], "readwrite").objectStore("product").delete(id);
-                request.onsuccess = (e) => window.location.href = "admin_products.html";
-            });
-        }
-
-        objectStore.openCursor().onsuccess = (e) => {
-            var cursor = e.target.result;
-            var element = $("#produtos");
-            if (cursor) {
-                var id = cursor.key;
-                var name = cursor.value.Name;
-                var description = cursor.value.Description;
-                var price = cursor.value.Price;
-                var stock = cursor.value.Stock;
-                var photo = cursor.value.Photo;
-                var type = cursor.value.Type;
-
-                element.append(
-                '<div class="col-lg-4">' +
-                    '<div class="card">' +
-                        '<img class="img-fluid" src="' + photo + '">' +
-                        '<div class="card-block">' +
-                            '<h4 class="card-title"><strong>' + name + '</strong></h4>' +
-                            '<p class="card-text">' + description.substring(0, 50) + '...</p>' +
-                            '<a href="detail_product.html?id=' + id + '" class="black-text"><h5>Ler mais <i class="fa fa-chevron-right"></i></h5></a>' +
-                            '<div class="offset-lg-1">' +
-                                '<a href="edit_product.html?id=' + id + '" target="_blank" class="btn btn-primary">Editar</a>' +
-                                '<button class="btn btn-danger del_product" data-id="' + id +'">Remover</button>' +
-                            '</div>' +
-                        '</div>' +
-                    '</div>' +
-                '</div>'
-                );
-
-                cursor.continue();
-            }
-        }
-    }
-}
-
-
 $(document).ready(function () {
     toastr.options = {
         "closeButton": false,
@@ -668,12 +485,6 @@ $(document).ready(function () {
     add_pet_toDB();
     add_calendar_toDB();
     add_service_toDB();
-    register_admin();
-    register_client();
-    register_product();
-    register_service();
-    list_products();	
-    $('.mdb-select').material_select();
 //Disable adding more than 1 item to cart, in cart can be change the number of items
     $(document).on('click', "a.addcart", function () {
         $(this).attr('style', 'pointer-events: none');
