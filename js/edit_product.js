@@ -3,41 +3,56 @@ var db;
 var key = getQueryParams(document.location.search);
 var id = key['id'];
 
-$(document).ready(function () {
+$(document).ready(function() {
+	$('.mdb-select').material_select(); // to input select
 	var openRequest = indexedDB.open("pet_shop", 1);
-
 	openRequest.onsuccess = (e) => {
 		db = e.target.result;
 		var transaction = db.transaction("product", "readonly");
-	    var objectStore = transaction.objectStore("product");
-	    var request = objectStore.get(id);
+		var objectStore = transaction.objectStore("product");
+		var request = objectStore.get(id);
 
-	    request.onsuccess = (e) => {
-	        var data = e.target.result;
-	        var element = $("#product");
-
-	        element.append(
-	        '<div class="card-header default-color-dark white-text">' +
-	            '<h1>' + data.Name + '</h1>' +
-	        '</div>' +
-	        '<div class="card-block">' +
-	            '<div class="row">' +
-	                '<div class="col-lg-4 offset-lg-4">' +
-	                    '<img class="img-fluid" src="' + data.Photo + '">' +
-	                '</div>' +
-	            '</div>' +
-	            '<div class="row">' +
-	                '<div class="col-lg-12">' +
-	                    '<h4 class="card-title"><strong>Preço:</strong> R$ ' + data.Price + '</h4>' +
-	                    '<h4 class="card-title"><strong>Stock:</strong> ' + data.Stock + ' unidades</h4>' + 
-	                    '<h4 class="card-title"><strong>Descrição:</strong></h4>' +
-	                    '<p class="card-text">' + data.Description + '</p>' +               
-	                '</div>' +
-	            '</div>' +
-	        '</div>'
-	        )
-	    }
+		request.onsuccess = (e) => {
+			var data = e.target.result;
+			$("#nome").attr("value", data.Name);
+			$("#descricao").text(data.Description);
+			$("#photo").attr("value", data.Photo);
+			$("#preco").attr("value", data.Price);
+			$("#quantidade").attr("value", data.Stock);
+			$("#tipo option[value=" + data.Type + "]").attr("selected", "selected");
+		}
 	}
+
+	$("#ed_product").click(function() {
+		var dataArray = $("#edit_product").serializeArray();
+		var data = {};
+
+		$(dataArray).each(function(i, field) {
+			data[field.name] = field.value;
+		});
+
+		var transaction = db.transaction(["product"], "readwrite");
+		var objectStore = transaction.objectStore("product");
+		var request = objectStore.get(id);
+
+		request.onsuccess = (e) => {
+			var d = e.target.result;
+
+			d.Name = data['nome'];
+			d.Type = data['tipo'];
+			d.Description = data['descricao'];
+			d.Price = data['preco'];
+			d.Stock = data['quantidade'];
+			d.Photo = data['photo'];
+
+			var requestUpdate = objectStore.put(d);
+
+			requestUpdate.onsuccess = (e) => {
+ 				window.location.href="admin_products.html";
+ 				alert("Produto editado");
+			}			
+		}
+	});
 });
 
 function getQueryParams(qs) {
