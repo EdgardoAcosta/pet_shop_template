@@ -280,7 +280,7 @@ function selectedDay(day, month, year) {
             }
         };
     };
-=======
+	
 	var element = $('#reservation-table');
 	element.html("");
 
@@ -354,7 +354,6 @@ function selectedDay(day, month, year) {
 			}
 		};
 	};
->>>>>>> fa76ee794dd9d9ef93117911a1b6729483b7370e
 }
 
 function selectDay() {
@@ -381,18 +380,11 @@ function selectDay() {
     });
 }
 
-<<<<<<< HEAD
-$(document).ready(function () {
-    createCalendarOf();
-    changeCalender();
-    selectDay();
-=======
 $(document).ready(function() {
 	setUser();
 	createCalendarOf();
 	changeCalender();
 	selectDay();
->>>>>>> fa76ee794dd9d9ef93117911a1b6729483b7370e
 
     $('.calendar-main .date-days .date-row a:not(.disabled):first').click();
 });
