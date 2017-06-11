@@ -2,8 +2,7 @@
 <html>
 <head>
     <!-- tab image-->
-    <link rel="icon"
-          href="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/698183/1161/773/m1/fpnw/wm0/pet-shop-.png?1444150631&s=5abfd42752dfc67a6903b054b5680d87">
+    <link rel="icon" href="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/698183/1161/773/m1/fpnw/wm0/pet-shop-.png?1444150631&s=5abfd42752dfc67a6903b054b5680d87">
 
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -21,7 +20,6 @@
     <link href="../css/mdb.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/style.css">
-
 </head>
 
 <body class="fixed-sn green-skin">
@@ -33,7 +31,7 @@
         <!-- Logo -->
         <li>
             <div class="logo-wrapper waves-light">
-                <a href="/index.html"><img src="Images/Logo_Pet_Shop.png" class="img-fluid flex-center"></a>
+                <a href="./index.html"><img src="Images/Logo_Pet_Shop.png" class="img-fluid flex-center"></a>
             </div>
         </li>
         <!--/. Logo -->
@@ -151,41 +149,41 @@
                         <!--/.Table body-->
                     </table>
                     <!--/.Reservation table-->
+
+                    <div id="pet-modal" class="modal-lg fade" tabindex="-1" role="dialog" aria-labelledby="pet-modal" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                                        <span aria-hidden="true"><i class="fa fa-times"></i></span>
+                                    </button>
+
+                                    <h4 class="modal-title w-100">Seus Pets</h4>
+                                </div>
+
+                                <div class="modal-body">
+                                    <table class="table-responsive">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Pet</th>
+                                            <th>Nome</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody id="pet-table">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!--/.Second column-->
         </div>
     </div>
 </main>
-
-<div id="pet-modal" class="modal-lg fade" tabindex="1" role="dialog" aria-labelledby="pet-modal" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="close">
-                    <span aria-hidden="true"><i class="fa fa-times"></i></span>
-                </button>
-
-                <h4 class="modal-title w-100">Seus Pets</h4>
-            </div>
-
-            <div class="modal-body">
-                <table class="centered responsive-table">
-                    <thead>
-                    <tr>
-                        <th></th>
-                        <th>Pet</th>
-                        <th>Nome</th>
-                    </tr>
-                    </thead>
-
-                    <tbody id="pet-table">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!--Footer-->
 <footer class="page-footer center-on-small-only">
@@ -238,10 +236,8 @@
     <!--Social buttons-->
     <div class="social-section">
         <ul>
-            <li><a href="#" target="_blank" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a>
-            </li>
-            <li><a href="#" target="_blank" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a>
-            </li>
+            <li><a href="#" target="_blank" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+            <li><a href="#" target="_blank" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
         </ul>
     </div>
     <!--/.Social buttons-->
@@ -256,9 +252,9 @@
 </footer>
 <!--/.Footer-->
 
-<script src="../js/jquery-2.2.3.min.js" type="text/javascript"></script>
-<script src="../js/mdb.min.js" type="text/javascript"></script>
-<script src="../js/bootstrap.js" type="text/javascript"></script>
-<script src="../js/diary.js" type="text/javascript"></script>
+<script src="js/jquery-2.2.3.min.js" type="text/javascript"></script>
+<script src="js/mdb.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.js" type="text/javascript"></script>
+<script src="js/diary.js" type="text/javascript"></script>
 </body>
 </html>

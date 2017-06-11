@@ -61,6 +61,41 @@ function removeService(element) {
     };
 }
 
+function setUser() {
+	var element = $('#pet-table');
+
+	var open = indexedDB.open("pet_shop", 1);
+
+	open.onsuccess = function(event) {
+		var db = event.target.result;
+
+		db.transaction("user").objectStore("user").get("1").onsuccess = function(evt) {
+			 $('li[id^="user-li"]').append('<a href="user/index.html"><i class="fa fa-user-circle"></i> ' + evt.target.result.Name + '</a>');
+
+			 db.transaction("pet", "readwrite").objectStore("pet").openCursor().onsuccess = function(evt) {
+			 	var cursor = evt.target.result;
+
+			 	if (cursor && cursor.value.Id_User == '1') {
+			 		element.append(
+			 			'<tr>' +
+			 				'<td>' +
+			 					'<button class="close btn btn-floating blue accent-3 adder-pet" data-dismiss="modal" aria-label="close" type="button" data-id="' + cursor.key + '"' +
+			 					'onclick="updateReservation(this)">' +
+			 						'<i class="fa fa-plus fa-2x"></i>' +
+			 					'</button>' +
+		 					'</td>' +
+			 				'<td><img src="../' + cursor.value.Photo + '"></td>' +
+			 				'<td>' + cursor.value.Name + '</td>' +
+			 			'</tr>'
+		 			);
+
+		 			cursor.continue();
+			 	}
+			 };
+		};
+	};
+}
+
 function updateReservation(element) {
     var idPet = $(element).data('id');
 
@@ -170,6 +205,7 @@ function changeCalender() {
 }
 
 function selectedDay(day, month, year) {
+<<<<<<< HEAD
     var element = $('#reservation-table');
     element.html("");
 
@@ -244,6 +280,81 @@ function selectedDay(day, month, year) {
             }
         };
     };
+=======
+	var element = $('#reservation-table');
+	element.html("");
+
+	var open = indexedDB.open("pet_shop", 1);
+
+	open.onsuccess = function(ee) {
+		var db = ee.target.result;
+
+		db.transaction("calendar").objectStore("calendar").openCursor().onsuccess = function(evt) {
+			var cursor = evt.target.result;
+
+			if (cursor) {
+				var id, service, pet, date, html;
+
+				id = cursor.key;
+				service = cursor.value.Id_Service;
+				pet = cursor.value.Id_Pet;
+				date = new Date(cursor.value.Date);
+
+				if (date.getFullYear() == year && date.getDate() == day && date.getMonth() == month) {
+					html = '<tr><td scope="row">' + date.getHours() + 'h' + date.getMinutes() + '</td>';
+
+					db.transaction("service").objectStore("service").get(service).onsuccess = function(event) {
+						html += '<td><img src="../' + event.target.result.Photo + '"></td>';
+
+						if (pet !== '0') {
+							db.transaction("pet").objectStore("pet").get(pet).onsuccess = function(event) {
+								html += '<td><img src="../' + event.target.result.Photo + '"></td>';
+
+								db.transaction("user").objectStore("user").get(event.target.result.Id_User).onsuccess = function(e) {
+									html += '<td>Reservado por ' + e.target.result.Name + '</td>';
+
+									if (e.target.result.Id === '1') {
+										html += 
+											'<td>' +
+												'<a href="#" class="btn btn-floating waves-effect wave-light blue accent-3" data-id="' + id +'"' +
+												'onclick="updateService(this)" data-toggle="modal" data-target="#pet-modal" data-backdrop="false">' +
+													'<i class="fa fa-pencil"></i>' +
+												'</a>' +
+
+												'<a href="#" class="btn btn-floating waves-effect wave-light red accent-2" data-id="' + id + '"' +
+												'onclick="removeService(this)">' +
+													'<i class="fa fa-times"></i>' +
+												'</a>' +
+											'</td>';
+									} else {
+										html += '<td></td>';
+									}
+
+									html += '</tr>';
+
+									element.append(html);
+								};
+							};
+						} else {
+							html += '<td>---</td>';
+							html += '<td colspan="2">' +
+									'<a href="#" class="btn btn-floating waves-effect wave-light blue accent-3" data-id="' + id +'"' +
+									'onclick="updateService(this)" data-toggle="modal" data-target="#pet-modal">' +
+										'<i class="fa fa-plus fa-2x"></i>' +
+									'</a>' +
+								'</td></tr>';
+							element.append(html);
+						}
+					};
+				}
+
+				cursor.continue();
+			} else {
+				console.log("append");
+			}
+		};
+	};
+>>>>>>> fa76ee794dd9d9ef93117911a1b6729483b7370e
 }
 
 function selectDay() {
@@ -270,10 +381,18 @@ function selectDay() {
     });
 }
 
+<<<<<<< HEAD
 $(document).ready(function () {
     createCalendarOf();
     changeCalender();
     selectDay();
+=======
+$(document).ready(function() {
+	setUser();
+	createCalendarOf();
+	changeCalender();
+	selectDay();
+>>>>>>> fa76ee794dd9d9ef93117911a1b6729483b7370e
 
     $('.calendar-main .date-days .date-row a:not(.disabled):first').click();
 });

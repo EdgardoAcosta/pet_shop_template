@@ -95,7 +95,7 @@
 
 				<ul class="nav navbar-nav pull-right">
 
-					<li class="nav-item "><a class="nav-link"><i class="fa fa-user-md"></i> <span class="hidden-sm-down">Admin</span></a></li>
+					<li class="nav-item "><a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down">Client</span></a></li>
 					<li class="nav-item "><a class="nav-link"><i class="fa fa-sign-out"></i> <span class="hidden-sm-down">Fechar sessão</span></a></li>
 				</ul>
 
@@ -119,48 +119,47 @@
 
 		        <!--Body-->
 				
+				<form id="register_client" enctype="multipart/form-data" method="post">
+			        <div class="md-form">
+			            <i class="fa fa-user prefix"></i>
+			            <input type="text" name="id" id="id" class="form-control" placeholder="Id" required>
+			        </div>
+					
+			        <div class="md-form">
+			            <i class="fa fa-lock prefix"></i>
+			            <input type="password" name="pass" id="pass" class="form-control" placeholder="Senha" required>
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-user prefix"></i>
-		            <input type="text" id="id" class="form-control" placeholder="Id">
-		        </div>
-				
-				
-		        <div class="md-form">
-		            <i class="fa fa-lock prefix"></i>
-		            <input type="password" id="pass" class="form-control" placeholder="Senha">
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-pencil prefix"></i>
+			            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-pencil prefix"></i>
-		            <input type="text" id="nome" class="form-control" placeholder="Nome">
-		        </div>
+			        <div class="md-form">
+					     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
+					     <input type="file">
+					     <input type="text" name="photo" id="photo" placeholder="Photo" required>
+				    </div>
 
-		        <div class="md-form">
-				     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
-				     <input type="file">
-				     <input type="text" placeholder="Photo">
-			    </div>
+			        <div class="md-form">
+			            <i class="fa fa-phone prefix"></i>
+			            <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Telefone">
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-phone prefix"></i>
-		            <input type="text" id="telefone" class="form-control" placeholder="Telefone">
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-envelope prefix"></i>
+			            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-envelope prefix"></i>
-		            <input type="text" id="email" class="form-control" placeholder="Email">
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-home prefix"></i>
+			            <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Endereço" required>
+			        </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-home prefix"></i>
-		            <input type="text" id="endereco" class="form-control" placeholder="Endereço">
-		        </div>
-
-		        <div class="text-center offset-lg-5">
-		            <button class="btn btn-dark-green">Cadastrar</button>
-		        </div>
-
+			        <div class="text-center offset-lg-5">
+			            <button class="btn btn-dark-green" type="submit" name="reg_client" id="reg_client">Cadastrar</button>
+			        </div>
+				</form>
 		    </div>
 		</div>
 		<!--/Form with header-->
@@ -235,4 +234,8 @@
 			<!--/.Copyright-->
 		</footer>
 		<!--/.Footer-->
+		<script src="../../js/jquery-2.2.3.min.js"></script>
+		<script src="../../js/register_client.js"></script>
+		<script src="../../js/mdb.min.js"></script>
 	</body>
+</html>

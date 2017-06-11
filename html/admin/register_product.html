@@ -20,7 +20,8 @@
 		<link href="../../css/mdb.min.css" rel="stylesheet">
 
 		<link rel="stylesheet" href="../../css/style.css">
-
+		
+		<link rel="stylesheet" type="text/css" href="../../css/register_product.css">
 	</head>
 
 	<body class="fixed-sn green-skin">
@@ -117,39 +118,54 @@
 		        <div class="form-header green-gradient">
 		            <h3><i class="fa fa-shopping-bag"></i> Cadastrar produto:</h3>
 		        </div>
-
+				
+				<form id="register_product" enctype="multipart/form-data" method="post">
 		        <!--Body-->
-		        <div class="md-form">
-		            <i class="fa fa-shopping-bag prefix"></i>
-		            <input type="text" id="nome" class="form-control" placeholder="Nome">
-		        </div>
+		        	 <div class="md-form">
+			            <i class="fa fa-key prefix"></i>
+			            <input type="text" name="id" id="id" class="form-control" placeholder="Id" required>
+			        </div>
 
-				<div class="md-form">
-				    <i class="fa fa-pencil prefix"></i>
-				    <textarea type="text" id="descricao" class="md-textarea" placeholder="Descrição"></textarea>
-				 </div>
+			        <div class="md-form">
+			            <i class="fa fa-shopping-bag prefix"></i>
+			            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
+			        </div>
 
-		        <div class="md-form">
-				     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
-				     <input type="file">
-				     <input type="text" placeholder="Photo">
-			    </div>
+			        <div class="md-form">
+			            <i class="fa fa-paw prefix active"></i>			     
+			            <select class="mdb-select" name="tipo" id="tipo">
+			            	<option value="" disabled selected>Tipo</option>
+			            	<option value="vestuario">Vestuário</option>
+			            	<option value="alimentacao">Alimentação</option>
+			            	<option value="acessorios">Acessórios</option>
+			            </select>
+			        </div>
 
+					<div class="md-form">
+					    <i class="fa fa-pencil prefix"></i>
+					    <textarea type="text" name="descricao" id="descricao" class="md-textarea" placeholder="Descrição" required></textarea>
+					 </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-money prefix"></i>
-		            <input type="text" id="preco" class="form-control" placeholder="Preço">
-		        </div>
+			        <div class="md-form">
+					     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
+					     <input type="file">
+					     <input type="text" name="photo" id="photo" placeholder="Photo" required>
+				    </div>
 
-		        <div class="md-form">
-		            <i class="fa fa-calculator prefix"></i>
-		            <input type="text" id="quantidade" class="form-control" placeholder="Quantidade">
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-money prefix"></i>
+			            <input type="text" name="preco" id="preco" class="form-control" placeholder="Preço" required>
+			        </div>
 
-		        <div class="text-center offset-lg-5">
-		            <button class="btn btn-dark-green">Cadastrar</button>
-		        </div>
+			        <div class="md-form">
+			            <i class="fa fa-calculator prefix"></i>
+			            <input type="text" name="quantidade" id="quantidade" class="form-control" placeholder="Quantidade" required>
+			        </div>
 
+			        <div class="text-center offset-lg-5">
+			            <button class="btn btn-dark-green" type="submit" id="reg_product" name="reg_product">Cadastrar</button>
+			        </div>
+				</form>
 		    </div>
 		</div>
 		<!--/Form with header-->
@@ -224,5 +240,8 @@
 			<!--/.Copyright-->
 		</footer>
 		<!--/.Footer-->
+		<script src="../../js/jquery-2.2.3.min.js"></script>
+		<script src="../../js/register_product.js"></script>
+		<script src="../../js/mdb.min.js"></script>
 	</body>
 </html>
