@@ -43,12 +43,12 @@ José Richard Tejedo Vega: 10222991
 <!--Double navigation-->
 <header>
     <!-- Sidebar navigation -->
-    <ul id="slide-out" class="side-nav fixed custom-scrollbar" >
+    <ul id="slide-out" class="side-nav fixed custom-scrollbar">
 
         <!-- Logo -->
         <li>
             <div class="logo-wrapper waves-light">
-                <a href="#"><img src="Images/Logo Pet Shop.png" class="img-fluid flex-center"></a>
+                <a href="./index.html"><img src="Images/Logo_Pet_Shop.png" class="img-fluid flex-center"></a>
             </div>
         </li>
         <!--/. Logo -->
@@ -56,7 +56,7 @@ José Richard Tejedo Vega: 10222991
         <!--Social-->
         <li>
             <ul class="social">
-                <li><a href="https://www.facebook.com/mdbootstrap" target="_blank" class="icons-sm fb-ic"><i
+                <li><a href="https://www.facebook.com/" target="_blank" class="icons-sm fb-ic"><i
                         class="fa fa-facebook"> </i></a></li>
                 <li><a class="icons-sm git-ic"><i class="fa fa-twitter"> </i></a></li>
             </ul>
@@ -80,9 +80,9 @@ José Richard Tejedo Vega: 10222991
                         class="fa fa-angle-down rotate-icon"></i></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a class="dropdown-item" href="#">Vestuário</a></li>
-                            <li><a class="dropdown-item" href="#">Alimentação</a></li>
-                            <li><a class="dropdown-item" href="#">Acessórios</a></li>
+                            <li><a class="dropdown-item" href="index.html#product-list">Vestuário</a></li>
+                            <li><a class="dropdown-item" href="index.html#product-list">Alimentação</a></li>
+                            <li><a class="dropdown-item" href="index.html#product-list">Acessórios</a></li>
                         </ul>
                     </div>
                 </li>
@@ -91,9 +91,9 @@ José Richard Tejedo Vega: 10222991
                         class="fa fa-angle-down rotate-icon"></i></a>
                     <div class="collapsible-body">
                         <ul>
-                            <li><a class="dropdown-item" href="#">Banhos</a></li>
-                            <li><a class="dropdown-item" href="#">Corte de cabelo</a></li>
-                            <li><a class="dropdown-item" href="#">Corte de unhas</a></li>
+                            <li><a class="dropdown-item" href="html/diary.html">Banhos</a></li>
+                            <li><a class="dropdown-item" href="html/diary.html">Corte de cabelo</a></li>
+                            <li><a class="dropdown-item" href="html/diary.html">Corte de unhas</a></li>
                         </ul>
                     </div>
                 </li>
@@ -114,7 +114,8 @@ José Richard Tejedo Vega: 10222991
         </div>
 
         <ul class="nav navbar-nav pull-right">
-            <li class="nav-item"><a class="nav-link" href="cart.html"> <span class="label pink z-depth-1" id="num_of_products" >0</span> <i
+            <li class="nav-item"><a class="nav-link" href="cart.html"> <span class="label pink z-depth-1"
+                                                                             id="num_of_products">0</span> <i
                     class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Carrinho</span></a></li>
             <li class="nav-item"><a class="nav-link" href="login.html"><i class="fa fa-sign-in"></i> <span
                     class="hidden-sm-down">Iniciar Sessão</span></a></li>
@@ -277,7 +278,6 @@ José Richard Tejedo Vega: 10222991
         <hr class="between-sections">
         <!--Full catalog-->
         <section class="section" id="product-list">
-
 
 
         </section>
@@ -490,5 +490,32 @@ José Richard Tejedo Vega: 10222991
     <!--/.Copyright-->
 </footer>
 <!--/.Footer-->
+
+
+<!-- SCRIPTS -->
+
+<!-- JQuery -->
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+
+<!-- Tooltips -->
+<script type="text/javascript" src="js/tether.min.js"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+
+<script>
+    // SideNav init
+    $(".button-collapse").sideNav();
+    var el = document.querySelector('.custom-scrollbar');
+    Ps.initialize(el);
+</script>
+
+<script>
+    new WOW().init();
+</script>
+
 </body>
 </html>

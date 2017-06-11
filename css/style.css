@@ -146,7 +146,7 @@ ul#slide-out  div.logo-wrapper {
 
 @media (max-width: 1440px){
 	ul#slide-out {
-		visibility: hidden;
+		/*visibility: hidden;*/
 	}	
 }
 

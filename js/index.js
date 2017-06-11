@@ -21,6 +21,7 @@ if (!window.indexedDB) {
 //</editor-fold>
 //
 function add_to(table, data, message = "added") {
+
     var open = indexedDB.open("pet_shop", 1);
 
     open.onsuccess = function () {
@@ -297,6 +298,7 @@ function add_pet_toDB() {
 }
 
 function add_calendar_toDB() {
+    console.log("Calendar1");
 	// Add some data
 	const data = [
 		{
@@ -405,6 +407,7 @@ function add_service_toDB() {
 }
 
 function create_DB(open) {
+    console.log("Create DB's");
 
     // Create the schema
     open.onupgradeneeded = function () {
