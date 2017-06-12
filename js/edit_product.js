@@ -53,6 +53,16 @@ $(document).ready(function() {
 			}			
 		}
 	});
+
+	$('.fa-instagram').click(function (event) {
+        $('#photo-file').click();
+    });
+
+    $('#photo-file').change(function (event) {
+        var text = $(this).val();
+        console.log(text);
+        $('#photo').val(text);
+    }); 
 });
 
 function getQueryParams(qs) {
@@ -68,3 +78,5 @@ function getQueryParams(qs) {
 
     return params;
 }
+
+
