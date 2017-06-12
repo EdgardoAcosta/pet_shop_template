@@ -25,7 +25,7 @@ $(document).ready(function() {
                     var transaction = db.transaction(["user"], "readwrite");
 
                     var objectStore = transaction.objectStore("user");
-                    var request = objectStore.add({ Id: data['id'], Type: 'client', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email'], Address: data['endereco']});
+                    var request = objectStore.add({ Id: data['id'], Type: '0', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email'], Address: data['endereco']});
 
                     request.onsuccess = (e) => {
                         alert("Cliente cadastrado.");
@@ -33,4 +33,14 @@ $(document).ready(function() {
                 } else alert("O id já está sendo usado. Use outro.");
             }    
     });
+
+    $('.fa-instagram').click(function (event) {
+        $('#photo-file').click();
+    });
+
+    $('#photo-file').change(function (event) {
+        var text = $(this).val();
+        console.log(text);
+        $('#photo').val(text);
+    }); 
 });
