@@ -25,12 +25,22 @@ $(document).ready(function() {
                 var transaction = db.transaction(["user"], "readwrite");
 
                 var objectStore = transaction.objectStore("user");
-                var request = objectStore.add({ Id: data['id'], Type: 'admin', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email']});
+                var request = objectStore.add({ Id: data['id'], Type: '1', Password: data['pass'], Name: data['nome'], Photo: data['photo'], Phone: data['telefone'], Email: data['email']});
 
                 request.onsuccess = (e) => {
                     alert("Administrador cadastrado.");
                 }
             } else alert("O id já está sendo usado. Use outro.");
         }  
+    });
+
+    $('.fa-instagram').click(function (event) {
+        $('#photo-file').click();
+    });
+
+    $('#photo-file').change(function (event) {
+        var text = $(this).val();
+        console.log(text);
+        $('#photo').val(text);
     }); 
 });
