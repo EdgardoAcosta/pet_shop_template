@@ -1,6 +1,8 @@
 /**
- * Created by edgardoacosta on 22/05/17.
- */
+ * Manuel Francisco Haro Arroyo: 10223004
+ * Edgardo Acosta Leal: 1022755
+ * José Richard Tejedo Vega: 10222991
+ * */
 //<editor-fold desc="IDB">
 //prefixes of implementation that we want to test
 window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
@@ -18,7 +20,6 @@ if (!window.indexedDB) {
 
 //</editor-fold>
 var open = indexedDB.open("pet_shop", 1);
-var url = "pet_shop/";
 var id_usr = 1;
 
 function get_cart(id_us) {
@@ -54,9 +55,9 @@ function get_cart(id_us) {
                     description = prod.result.Description;
                     price = prod.result.Price;
                     stock = prod.result.Stock;
-                    photo = url + prod.result.Photo;
+                    photo = prod.result.Photo;
 
-                    $("#table-cart").append(' <tr id="' + id + '"><td scope="row"><img src="../' + photo + '" ' +
+                    $("#table-cart").append(' <tr id="' + id + '"><td scope="row"><img src="' + photo + '" ' +
                         'alt="Prato de cachorro" class="img-fluid z-depth-0"></td> <td>' + name + '</td><td class="price">' + price + '</td>' +
                         '<td><span class="quantity">1</span><div class="btn-group" data-toggle="buttons">' +
                         '<label class="btn btn-sm btn-primary btn-rounded waves-effect waves-light">' +
