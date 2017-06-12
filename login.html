@@ -39,7 +39,7 @@ José Richard Tejedo Vega: 10222991
         <!-- Logo -->
         <li>
             <div class="logo-wrapper waves-light">
-                <a href="index.html"><img src="Images/Logo_Pet_Shop.png" class="img-fluid flex-center"></a>
+                <a href="index.html"><img src="Images/Logo Pet Shop.png" class="img-fluid flex-center"></a>
             </div>
         </li>
         <!--/. Logo -->
@@ -47,8 +47,7 @@ José Richard Tejedo Vega: 10222991
         <!--Social-->
         <li>
             <ul class="social">
-                <li><a href="https://www.facebook.com/" target="_blank" class="icons-sm fb-ic"><i
-                        class="fa fa-facebook"> </i></a></li>
+                <li><a href="https://www.facebook.com/mdbootstrap" target="_blank" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
                 <li><a class="icons-sm git-ic"><i class="fa fa-twitter"> </i></a></li>
             </ul>
         </li>
@@ -65,7 +64,8 @@ José Richard Tejedo Vega: 10222991
         <!--/.Search Form-->
 
         <!-- Side navigation links -->
-        <li>
+        
+                <li>
             <ul class="collapsible collapsible-accordion">
                 <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-diamond"></i> Produtos<i
                         class="fa fa-angle-down rotate-icon"></i></a>
@@ -88,9 +88,10 @@ José Richard Tejedo Vega: 10222991
                         </ul>
                     </div>
                 </li>
-                <li><a class="waves-effect arrow-r"><i class="fa fa-calendar "></i> Calendário</a></li>
+                <li><a href="html/diary.html" class="waves-effect arrow-r"><i class="fa fa-calendar "></i> Calendário</a></li>
             </ul>
         </li>
+
         <!--/. Side navigation links -->
 
     </ul>
@@ -103,16 +104,6 @@ José Richard Tejedo Vega: 10222991
         <div class="pull-left">
             <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
         </div>
-
-        <ul class="nav navbar-nav pull-right">
-            <li class="nav-item"><a class="nav-link" href="cart.html"> <span class="label pink z-depth-1"
-                                                                             id="num_of_products">0</span> <i
-                    class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Carrinho</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html"><i class="fa fa-sign-in"></i> <span
-                    class="hidden-sm-down">Iniciar Sessão</span></a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html"><i class="fa fa-user-plus"></i> <span
-                    class="hidden-sm-down">Cadastrar-se</span></a></li>
-        </ul>
 
     </nav>
     <!--/.Navbar-->
@@ -128,7 +119,7 @@ José Richard Tejedo Vega: 10222991
             <!--First column-->
             <div class="col-lg-6">
                 <div class="description">
-                    <h2 class="h2-responsive wow fadeInLeft">Welcome back! </h2>
+                    <h2 class="h2-responsive wow fadeInLeft">Bemvindo!</h2>
                     <hr class="hr-dark wow fadeInLeft">
                     <p class="wow fadeInLeft" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit. Rem repellendus quasi fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi
@@ -148,28 +139,29 @@ José Richard Tejedo Vega: 10222991
                             <hr>
                         </div>
                         <!--Body-->
-                        <div class="md-form">
-                            <i class="fa fa-envelope prefix"></i>
-                            <input type="text" id="form2" class="form-control" required>
-                            <label for="form2">Your email</label>
-                        </div>
+                        <form id="login_client" method="post">
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input type="text" name="email" id="email" class="form-control" required>
+                                <label for="email">Email</label>
+                            </div>
 
-                        <div class="md-form">
-                            <i class="fa fa-lock prefix"></i>
-                            <input type="password" id="form4" class="form-control" required>
-                            <label for="form4">Your password</label>
-                        </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" name="pass" id="pass" class="form-control" required>
+                                <label for="pass">Senha</label>
+                            </div>
 
-                        <div class="text-xs-center">
-                            <button class="btn btn-comm btn-lg enter">Sign in</button>
-                            <button class="btn btn-comm btn-lg" id="signup">Sign up</button>
-                            <hr>
-                            <fieldset class="form-group">
-                                <input type="checkbox" id="remember1">
-                                <label for="checkbox1">Remember me</label>
-                            </fieldset>
-                        </div>
-
+                            <div class="text-xs-center">
+                                <button class="btn btn-comm btn-lg enter" id="log_client">Ingresar</button>
+                                <button class="btn btn-comm btn-lg" id="signup">Cadastrarse</button>
+                                <hr>
+                                <fieldset class="form-group">
+                                    <input type="checkbox" id="remember1">
+                                    <label for="checkbox1">Lembre-me</label>
+                                </fieldset>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!--/.Form-->
@@ -181,7 +173,7 @@ José Richard Tejedo Vega: 10222991
             <!--First column-->
             <div class="col-lg-6">
                 <div class="description">
-                    <h2 class="h2-responsive wow fadeInLeft">Sign up right now! </h2>
+                    <h2 class="h2-responsive wow fadeInLeft">Cadastre-se agora! </h2>
                     <hr class="hr-dark wow fadeInLeft">
                     <p class="wow fadeInLeft" data-wow-delay="0.4s">Lorem ipsum dolor sit amet, consectetur adipisicing
                         elit. Rem repellendus quasi fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi
@@ -199,7 +191,7 @@ José Richard Tejedo Vega: 10222991
                     <div class="card-block">
                         <!--Header-->
                         <div class="text-xs-center">
-                            <h3><i class="fa fa-user"></i> Register with:</h3>
+                            <h3><i class="fa fa-user"></i> Cadastre-se con:</h3>
                             <a href="#"
                                class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a>
                             <a href="#"
@@ -209,42 +201,48 @@ José Richard Tejedo Vega: 10222991
                         </div>
 
                         <!--Body-->
-                        <div class="md-form">
-                            <i class="fa fa-envelope prefix"></i>
-                            <input type="text" id="form2" class="form-control" required>
-                            <label for="form2">Your email</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-user-secret prefix"></i>
-                            <input type="text" id="form2" class="form-control" required>
-                            <label for="form2">Your name</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-lock prefix"></i>
-                            <input type="password" id="form4" class="form-control" required>
-                            <label for="form4">Your password</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-phone prefix"></i>
-                            <input type="tel" id="form4" class="form-control" required>
-                            <label for="form4">Your phone</label>
-                        </div>
-                        <div class="md-form">
-                            <i class="fa fa-home prefix"></i>
-                            <input type="text" id="form4" class="form-control" required>
-                            <label for="form4">Your address</label>
-                        </div>
+                        <form id="register_client" method="post">                        
+                            <div class="md-form">
+                                <i class="fa fa-key prefix"></i>
+                                <input type="text" id="id" name="id" class="form-control" required>
+                                <label for="id">Id</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-envelope prefix"></i>
+                                <input type="text" id="email" name="email" class="form-control" required>
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-user-secret prefix"></i>
+                                <input type="text" id="nome" name="nome" class="form-control" required>
+                                <label for="nome">Nome</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix"></i>
+                                <input type="password" id="pass" name="pass" class="form-control" required>
+                                <label for="pass">Senha</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-phone prefix"></i>
+                                <input type="tel" id="telefone" name="telefone" class="form-control" required>
+                                <label for="telefone">Telefone</label>
+                            </div>
+                            <div class="md-form">
+                                <i class="fa fa-home prefix"></i>
+                                <input type="text" id="endereco" name="endereco" class="form-control" required>
+                                <label for="endereco">Endereco</label>
+                            </div>
 
-                        <div class="text-xs-center">
-                            <button class="btn btn-comm btn-lg enter">Sign up</button>
-                            <button class="btn btn-comm btn-lg" id="singin">Sign in</button>
-                            <hr>
-                            <fieldset class="form-group">
-                                <input type="checkbox" id="checkbox1">
-                                <label for="checkbox1">Subscribe me to the newsletter</label>
-                            </fieldset>
-                        </div>
-
+                            <div class="text-xs-center">
+                                <button class="btn btn-comm btn-lg enter" id="reg_client">Cadastrarse</button>
+                                <button class="btn btn-comm btn-lg" id="singin">Log-in</button>
+                                <hr>
+                                <fieldset class="form-group">
+                                    <input type="checkbox" id="checkbox1">
+                                    <label for="checkbox1">Inscreva-me no boletim informativo</label>
+                                </fieldset>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <!--/.Form-->
@@ -280,6 +278,9 @@ José Richard Tejedo Vega: 10222991
 
     });
 </script>
+<script src="js/jquery-2.2.3.min.js"></script>
+<script src="js/mdb.min.js"></script>
+<script src="js/login.js"></script>
 </body>
 
 </html>
