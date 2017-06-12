@@ -23,7 +23,7 @@ $(document).ready(function () {
 	        '<div class="card-block">' +
 	            '<div class="row">' +
 	                '<div class="col-lg-4 offset-lg-4">' +
-	                    '<img class="img-fluid" src="' + data.Photo + '">' +
+	                    '<img class="img-fluid" src="../../' + data.Photo + '">' +
 	                '</div>' +
 	            '</div>' +
 	            '<div class="row">' +
