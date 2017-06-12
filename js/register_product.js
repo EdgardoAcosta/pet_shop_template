@@ -25,4 +25,14 @@ $(document).ready(function () {
             alert("Produto cadastrado");
         }	
     });
+
+    $('.fa-instagram').click(function (event) {
+        $('#photo-file').click();
+    });
+
+    $('#photo-file').change(function (event) {
+        var text = $(this).val();
+        console.log(text);
+        $('#photo').val(text);
+    }); 
 });
