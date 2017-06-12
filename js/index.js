@@ -166,13 +166,13 @@ function add_products_to_DB(open) {
         // Add some data
         const products = [
             {Id: "1",Type: "dog", Name: "Collar para cachorro", Description: "Descrição do collar para cachorro.",
-                Price: "100",Stock: "30",Photo: "../../Images/Categories/Accessories/collar_perro.jpg"},
+                Price: "100",Stock: "30",Photo: "Images/Categories/Accessories/collar_perro.jpg"},
             {Id: "2",Type: "cat", Name: "Casa para gato", Description: "Descrição da casa para gatos.",
-                Price: "150",Stock: "40",Photo: "../../Images/Categories/Accessories/kennei-trans.jpg"},
+                Price: "150",Stock: "40",Photo: "Images/Categories/Accessories/kennei-trans.jpg"},
             {Id: "3",Type: "dog", Name: "Roupa do cão", Description: "Descrição roupa do cão.",
-                Price: "200",Stock: "60",Photo: "../../Images/Categories/Clothing/logo.png"},
+                Price: "200",Stock: "60",Photo: "Images/Categories/Clothing/logo.png"},
             {Id: "4",Type: "cat", Name: "Descrição alimento de cão", Description: "Descrição da casa para gatos.",
-                Price: "240",Stock: "110",Photo: "../../Images/Categories/Feeding/alimento8-alimento.jpg"}
+                Price: "240",Stock: "110",Photo: "Images/Categories/Feeding/alimento8-alimento.jpg"}
         ];
 
         for (var i in products) {
