@@ -16,6 +16,7 @@ $(document).ready(function () {
 	        });
 	    }
 
+
 	    objectStore.openCursor().onsuccess = (e) => {
 	        var cursor = e.target.result;
 	        var element = $("#produtos");
