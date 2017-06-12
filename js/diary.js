@@ -205,7 +205,6 @@ function changeCalender() {
 }
 
 function selectedDay(day, month, year) {
-<<<<<<< HEAD
     var element = $('#reservation-table');
     element.html("");
 
