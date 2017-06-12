@@ -40,6 +40,7 @@ $(document).ready(function () {
 	}
 });
 
+
 function getQueryParams(qs) {
     qs = qs.split("+").join(" ");
     var params = {},
