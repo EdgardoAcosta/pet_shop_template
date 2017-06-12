@@ -21,7 +21,6 @@ if (!window.indexedDB) {
 //</editor-fold>
 //
 function add_to(table, data, message = "added") {
-
     var open = indexedDB.open("pet_shop", 1);
 
     open.onsuccess = function () {
@@ -167,13 +166,13 @@ function add_products_to_DB(open) {
         // Add some data
         const products = [
             {Id: "1",Type: "dog", Name: "Collar para cachorro", Description: "Descrição do collar para cachorro.",
-                Price: "100",Stock: "30",Photo: "Images/Categories/Accessories/collar_perro.jpg"},
+                Price: "100",Stock: "30",Photo: "../../Images/Categories/Accessories/collar_perro.jpg"},
             {Id: "2",Type: "cat", Name: "Casa para gato", Description: "Descrição da casa para gatos.",
-                Price: "150",Stock: "40",Photo: "Images/Categories/Accessories/kennei-trans.jpg"},
+                Price: "150",Stock: "40",Photo: "../../Images/Categories/Accessories/kennei-trans.jpg"},
             {Id: "3",Type: "dog", Name: "Roupa do cão", Description: "Descrição roupa do cão.",
-                Price: "200",Stock: "60",Photo: "Images/Categories/Clothing/logo.png"},
+                Price: "200",Stock: "60",Photo: "../../Images/Categories/Clothing/logo.png"},
             {Id: "4",Type: "cat", Name: "Descrição alimento de cão", Description: "Descrição da casa para gatos.",
-                Price: "240",Stock: "110",Photo: "Images/Categories/Feeding/alimento8-alimento.jpg"}
+                Price: "240",Stock: "110",Photo: "../../Images/Categories/Feeding/alimento8-alimento.jpg"}
         ];
 
         for (var i in products) {
@@ -227,7 +226,7 @@ function add_user_toDB() {
 			Phone: "+5511659566351",
 			Email: "ana@gmail.com",
 			Address: "...",
-			Photo: "images/users/798744243.jpg"
+			Photo: "Images/Users/Ana.jpg"
 		},
 
 		{
@@ -237,7 +236,7 @@ function add_user_toDB() {
 			Phone: "+5511659566351",
 			Email: "sakura@gmail.com",
 			Address: "...",
-			Photo: "images/users/763243241.jpg"
+			Photo: "Images/Users/Sakura.jpg"
 		},
 
 		{
@@ -247,7 +246,7 @@ function add_user_toDB() {
 			Phone: "+5511659566351",
 			Email: "roberto@gmail.com",
 			Address: "...",
-			Photo: "images/users/7365432423.jpg"
+			Photo: "Images/Users/Roberto.jpg"
 		}
 	];
 
@@ -262,7 +261,7 @@ function add_pet_toDB() {
 			Name: "Boby",
 			Age: "3 años",
 			Race: "...",
-			Photo: "images/pets/432413123.jpg",
+			Photo: "Images/Pets/432413123.jpg",
 			Id_User: "1"
 		},
 
@@ -271,7 +270,7 @@ function add_pet_toDB() {
 			Name: "Guffy",
 			Age: "3 años",
 			Race: "...",
-			Photo: "images/pets/654654654.jpg",
+			Photo: "Images/Pets/654654654.jpg",
 			Id_User: "1"
 		},
 
@@ -280,7 +279,7 @@ function add_pet_toDB() {
 			Name: "Spak",
 			Age: "2 años",
 			Race: "...",
-			Photo: "images/pets/554564654.jpg",
+			Photo: "Images/Pets/554564654.jpg",
 			Id_User: "2"
 		},
 
@@ -289,7 +288,7 @@ function add_pet_toDB() {
 			Name: "Docky",
 			Age: "1 años",
 			Race: "...",
-			Photo: "images/pets/698593458.jpg",
+			Photo: "Images/Pets/698593458.jpg",
 			Id_User: "2"
 		}
 	];
@@ -298,7 +297,6 @@ function add_pet_toDB() {
 }
 
 function add_calendar_toDB() {
-    console.log("Calendar1");
 	// Add some data
 	const data = [
 		{
@@ -383,7 +381,7 @@ function add_service_toDB() {
             Name: "Banhos",
             Description: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.",
             Price: "45.50",
-            Photo: "images/services/510231231.jpg"
+            Photo: "Images/Services/bañar mascotas.jpg"
         },
 
         {
@@ -391,7 +389,7 @@ function add_service_toDB() {
             Name: "Corte de unhas",
             Description: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.",
             Price: "75.80",
-            Photo: "images/services/5012412032.png"
+            Photo: "Images/Services/corte de uñas.png"
         },
 
         {
@@ -399,7 +397,7 @@ function add_service_toDB() {
             Name: "Corte de cabelo",
             Description: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci sed velit.",
             Price: "90.40",
-            Photo: "images/services/54331234.jpg"
+            Photo: "Images/Services/corte de perro.jpg"
         }
     ];
 
@@ -407,13 +405,11 @@ function add_service_toDB() {
 }
 
 function create_DB(open) {
-    console.log("Create DB's");
 
     // Create the schema
     open.onupgradeneeded = function () {
         console.log("open");
 		var db = open.result;
-		// var store = db.createObjectStore("product", {keyPath: "Id", autoIncrement:true });
 		var store = db.createObjectStore("product", {keyPath: "Id"});
 		var index = store.createIndex("Index", ["Id","Type", "Name", "Description", "Price", "Stock", "Photo", "Id_Category"]);
 		store.createIndex("by_id", "Id", { unique: true });
@@ -488,6 +484,7 @@ $(document).ready(function () {
     add_pet_toDB();
     add_calendar_toDB();
     add_service_toDB();
+
 //Disable adding more than 1 item to cart, in cart can be change the number of items
     $(document).on('click', "a.addcart", function () {
         $(this).attr('style', 'pointer-events: none');
