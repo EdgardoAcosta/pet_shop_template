@@ -32,7 +32,7 @@ $(document).ready(function () {
 	            element.append(
 	            '<div class="col-lg-4">' +
 	                '<div class="card">' +
-	                    '<img class="img-fluid" src="' + photo + '">' +
+	                    '<img class="img-fluid" src="../../' + photo + '">' +
 	                    '<div class="card-block">' +
 	                        '<h4 class="card-title"><strong>' + name + '</strong></h4>' +
 	                        '<p class="card-text">' + description.substring(0, 50) + '...</p>' +
