@@ -23,4 +23,14 @@ $(document).ready(function() {
             alert("Servico cadastrado");
         }
     });
+
+    $('.fa-instagram').click(function (event) {
+        $('#photo-file').click();
+    });
+
+    $('#photo-file').change(function (event) {
+        var text = $(this).val();
+        console.log(text);
+        $('#photo').val(text);
+    }); 
 });
