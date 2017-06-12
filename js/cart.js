@@ -1,8 +1,6 @@
 /**
- * Manuel Francisco Haro Arroyo: 10223004
- * Edgardo Acosta Leal: 1022755
- * José Richard Tejedo Vega: 10222991
- * */
+ * Created by edgardoacosta on 22/05/17.
+ */
 //<editor-fold desc="IDB">
 //prefixes of implementation that we want to test
 window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
