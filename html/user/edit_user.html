@@ -1,0 +1,246 @@
+<!DOCTYPE>
+<html>
+	<head>
+		<!-- tab image-->
+		<link rel="icon" href="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/698183/1161/773/m1/fpnw/wm0/pet-shop-.png?1444150631&s=5abfd42752dfc67a6903b054b5680d87">
+
+		<!-- Required meta tags always come first -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Pet Shop</title>
+
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+
+		<!-- Bootstrap core CSS -->
+		<link href="../../css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Material Design Bootstrap -->
+		<link href="../../css/mdb.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="../../css/style.css">
+
+	</head>
+
+	<body class="fixed-sn green-skin">
+		<!--Double navigation-->
+		<header>
+			<!-- Sidebar navigation -->
+			<ul id="slide-out" class="side-nav fixed custom-scrollbar">
+
+				<!-- Logo -->
+				<li>
+					<div class="logo-wrapper waves-light">
+						<a href="#"><img src="../../Images/Logo Pet Shop.png" class="img-fluid flex-center"></a>
+					</div>
+				</li>
+				<!--/. Logo -->
+
+				<!--Social-->
+				<li>
+					<ul class="social">
+						<li><a href="https://www.facebook.com/mdbootstrap" target="_blank" class="icons-sm fb-ic"><i class="fa fa-facebook"> </i></a></li>
+						<li><a class="icons-sm git-ic"><i class="fa fa-twitter"> </i></a></li>
+					</ul>
+				</li>
+				<!--/Social-->
+
+				<!--Search Form-->
+				<li>
+					<form class="search-form" role="search">
+						<div class="form-group waves-light">
+							<input type="text" class="form-control" placeholder="Pesquisa">
+						</div>
+					</form>
+				</li>
+				<!--/.Search Form-->
+
+				<!-- Side navigation links -->
+				
+		        <li>
+		            <ul class="collapsible collapsible-accordion">
+		                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-diamond"></i> Produtos<i
+		                        class="fa fa-angle-down rotate-icon"></i></a>
+		                    <div class="collapsible-body">
+		                        <ul>
+		                            <li><a class="dropdown-item" href="index.html#product-list">Vestuário</a></li>
+		                            <li><a class="dropdown-item" href="index.html#product-list">Alimentação</a></li>
+		                            <li><a class="dropdown-item" href="index.html#product-list">Acessórios</a></li>
+		                        </ul>
+		                    </div>
+		                </li>
+
+		                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-briefcase"></i> Serviços<i
+		                        class="fa fa-angle-down rotate-icon"></i></a>
+		                    <div class="collapsible-body">
+		                        <ul>
+		                            <li><a class="dropdown-item" href="html/diary.html">Banhos</a></li>
+		                            <li><a class="dropdown-item" href="html/diary.html">Corte de cabelo</a></li>
+		                            <li><a class="dropdown-item" href="html/diary.html">Corte de unhas</a></li>
+		                        </ul>
+		                    </div>
+		                </li>
+		                <li><a href="html/diary.html" class="waves-effect arrow-r"><i class="fa fa-calendar "></i> Calendário</a></li>
+		            </ul>
+		        </li>
+				<!--/. Side navigation links -->
+
+			</ul>
+			<!--/. Sidebar navigation -->
+
+			<!--Navbar-->
+			<nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+
+				<!-- SideNav slide-out button -->
+				<div class="pull-left">
+					<a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+				</div>
+
+				<ul class="nav navbar-nav pull-right">
+					<li class="nav-item"><a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down" id="user"></span></a></li>
+					<li class="nav-item "><a class="nav-link"><i class="fa fa-cog"></i> <span class="hidden-sm-down" id="edit_usuario">Perfil</span></a></li>
+				</ul>
+
+			</nav>
+			<!--/.Navbar-->
+		</header>
+		<!--/Double navigation-->
+
+		<!--Main layout-->
+		<main>
+			<br>
+			<div class="row">
+				<div class="col-lg-6 offset-lg-3">
+							
+					<!--Form with header-->
+					<div class="card">
+					    <div class="card-block">
+
+					        <!--Header-->
+					        <div class="form-header green-gradient">
+					            <h3><i class="fa fa-user"></i> Editar informação:</h3>
+					        </div>
+
+					        <!--Body-->
+							
+							<form id="edit_user" enctype="multipart/form-data" method="post">
+
+						        <div class="md-form">
+						            <i class="fa fa-envelope prefix"></i>
+						            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+						        </div>
+
+						        <div class="md-form">
+						            <i class="fa fa-lock prefix"></i>
+						            <input type="password" name="pass" id="pass" class="form-control" placeholder="Senha" required>
+						        </div>
+
+						        <div class="md-form">
+						            <i class="fa fa-pencil prefix"></i>
+						            <input type="text" name="nome" id="nome" class="form-control" placeholder="Nome" required>
+						        </div>
+
+						        <div class="md-form">
+								     <i class="fa fa-instagram prefix" style="cursor: pointer;"></i>
+								     <input type="file" id="photo-file">
+								     <input type="text" name="photo" id="photo" placeholder="Photo" required>
+							    </div>
+
+						        <div class="md-form">
+						            <i class="fa fa-phone prefix"></i>
+						            <input type="text" name="telefone" id="telefone" class="form-control" placeholder="Telefone">
+						        </div>
+
+						        <div class="md-form">
+						            <i class="fa fa-home prefix"></i>
+						            <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Endereço" required>
+						        </div>
+
+						        <div class="text-center offset-lg-5">
+						            <button class="btn btn-dark-green" type="submit" name="ed_user" id="ed_user">Editar</button>
+						        </div>
+							</form>
+					    </div>
+					</div>
+					<!--/Form with header-->
+
+				</div>
+			</div>
+		</main>
+		<!--/Main layout-->
+
+		<footer class="page-footer center-on-small-only">
+
+			<!--Footer Links-->
+			<div class="container-fluid">
+				<div class="row">  
+					<!--Second column-->
+					<div class="col-md-3 offset-md-1">
+						<h5 class="title">Produtos</h5>
+
+						<ul>
+							<li><a href="#!">Vestuário</a></li>
+							<li><a href="#!">Alimentação</a></li>
+							<li><a href="#!">Accessories</a></li>
+						</ul>
+					</div>
+					<!--/.Second column-->
+
+						<hr class="hidden-md-up">
+
+					<!--Third column-->
+					<div class="col-md-3">
+						<h5 class="title">Serviços</h5>
+
+						<ul>
+							<li><a href="#!">Banhos</a></li>
+							<li><a href="#!">Corte de cabelo</a></li>
+							<li><a href="#!">Corte de unhas</a></li>
+						</ul>
+					</div>
+					<!--/.Third column-->
+
+					<!--Fourth column-->
+					<div class="col-md-3">
+						<h5 class="title">Nos</h5>
+
+						<ul>
+							<li>Escrevenos a: <a href="mailto:pet.shop@gmail.com">pet.shop@gmail.com</a></li>
+							<li>Chámanos a: +5511659566351</li>
+						</ul>
+					</div>
+					<!--/.Fourth column-->
+				</div>
+			</div>
+			<!--/.Footer Links-->
+
+			<hr>
+
+			<!--Social buttons-->
+			<div class="social-section">
+				<ul>
+					<li><a href="#" target="_blank" class="btn-floating btn-small btn-fb"><i class="fa fa-facebook"> </i></a></li>
+					<li><a href="#"" target="_blank" class="btn-floating btn-small btn-tw"><i class="fa fa-twitter"> </i></a></li>
+				</ul>
+			</div>
+			<!--/.Social buttons-->
+
+			<!--Copyright-->
+			<div class="footer-copyright">
+				<div class="container-fluid">
+					© 2015 Copyright: <a href="http://www.MDBootstrap.com"> MDBootstrap.com </a>
+				</div>
+			</div>
+			<!--/.Copyright-->
+		</footer>
+		<!--/.Footer-->
+		<script src="../../js/jquery-2.2.3.min.js"></script>
+		<script src="../../js/edit_user.js"></script>
+		<script src="../../js/mdb.min.js"></script>
+	</body>
+</html>
+
+
+
+
