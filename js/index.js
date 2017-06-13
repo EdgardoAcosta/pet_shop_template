@@ -262,7 +262,7 @@ function add_pet_toDB() {
 		{
 			Id: "1",
 			Name: "Boby",
-			Age: "3 años",
+			Age: "3",
 			Race: "...",
 			Photo: "Images/Pets/432413123.jpg",
 			Id_User: "1"
@@ -271,7 +271,7 @@ function add_pet_toDB() {
 		{
 			Id: "2",
 			Name: "Guffy",
-			Age: "3 años",
+			Age: "3",
 			Race: "...",
 			Photo: "Images/Pets/654654654.jpg",
 			Id_User: "1"
@@ -280,7 +280,7 @@ function add_pet_toDB() {
 		{
 			Id: "3",
 			Name: "Spak",
-			Age: "2 años",
+			Age: "2",
 			Race: "...",
 			Photo: "Images/Pets/554564654.jpg",
 			Id_User: "2"
@@ -289,7 +289,7 @@ function add_pet_toDB() {
 		{
 			Id: "4",
 			Name: "Docky",
-			Age: "1 años",
+			Age: "1",
 			Race: "...",
 			Photo: "Images/Pets/698593458.jpg",
 			Id_User: "2"
