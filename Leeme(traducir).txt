@@ -1,0 +1,16 @@
+Funcionamiento de la pagina web
+
+Todos los test se hicieron en el navegador google chrome en el modo incognito, porque a veces no se 
+actualizaban los datos en el modo normal. Se recomienda usarlo de esta misma forma.
+
+Deber cargar primero index.html para que se cree la base de datos y se añadan algunos datos de forma automatica.
+
+Luego puede ver las funcionalidades del carrito de compras desde la misma pagina de inicio(index.html).
+
+Para la funcionalidad del calendario hacer clic en su icono en la barra de navegacion lateral.
+
+Para ver la funcion de login y registro de nuevos usuarios hacer clic en iniciar sesion en la barra superior.
+Ingresar con el email: ana@gmail.com, contraseña: ana123. Ingresando se pueden ver sus mascotas
+y todas las funcionalidades que se pueden hacer con ellas.
+
+Para ver la funcionalidad del administrador cargue cualquier pagina de la carpeta admin de la web.
