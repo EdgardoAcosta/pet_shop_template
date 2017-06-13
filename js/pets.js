@@ -35,10 +35,10 @@ $(document).ready(function() {
 	            	'<tr>' +
 						'<td><img src="../../' + photo + '" alt="Pet"></td>' +
 						'<td class="hidden-sm-down">' + name + '</td>' +
-						'<td class="hidden-sm-down">' + age + '</td>' +
+						'<td class="hidden-sm-down">' + age + ' anhos</td>' +
 						'<td class="hidden-sm-down">' + race + '</td>' +
 						'<td>' +
-							'<a href="edit_pet.html?id=' + idPet + '" class="btn btn-warning btn-rounded" data-original-title="Editar dados de pet" type="button" data-toggle="tooltip" data-placement="top" title="">' +
+							'<a href="edit_pet.html?id=' + idPet + '&user=' + id + '" class="btn btn-warning btn-rounded" data-original-title="Editar dados de pet" type="button" data-toggle="tooltip" data-placement="top" title="">' +
 								'<i class="fa fa-pencil"></i>' +
 							'</a>' +
 							'<a href="#" class="btn btn-danger btn-rounded del_pet" data-id="' + idPet + '" data-original-title="Remover pet" type="button" data-toggle="tooltip" data-placement="top" title="">' +
