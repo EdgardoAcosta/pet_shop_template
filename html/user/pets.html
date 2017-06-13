@@ -32,7 +32,7 @@
 				<!-- Logo -->
 				<li>
 					<div class="logo-wrapper waves-light">
-						<a href="#"><img src="../../Images/Logo_Pet_Shop.png" class="img-fluid flex-center"></a>
+						<a href="#"><img src="../../Images/Logo Pet Shop.png" class="img-fluid flex-center"></a>
 					</div>
 				</li>
 				<!--/. Logo -->
@@ -57,30 +57,33 @@
 				<!--/.Search Form-->
 
 				<!-- Side navigation links -->
-				<li>
-					<ul class="collapsible collapsible-accordion">
-						<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-diamond"></i> Produtos<i class="fa fa-angle-down rotate-icon"></i></a>
-							<div class="collapsible-body">
-								<ul>
-									<li><a class="dropdown-item" href="#">Vestuário</a></li>
-									<li><a class="dropdown-item" href="#">Alimentação</a></li>
-									<li><a class="dropdown-item" href="#">Acessórios</a></li>
-								</ul>
-							</div>
-						</li>
+				
+		        <li>
+		            <ul class="collapsible collapsible-accordion">
+		                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-diamond"></i> Produtos<i
+		                        class="fa fa-angle-down rotate-icon"></i></a>
+		                    <div class="collapsible-body">
+		                        <ul>
+		                            <li><a class="dropdown-item" href="index.html#product-list">Vestuário</a></li>
+		                            <li><a class="dropdown-item" href="index.html#product-list">Alimentação</a></li>
+		                            <li><a class="dropdown-item" href="index.html#product-list">Acessórios</a></li>
+		                        </ul>
+		                    </div>
+		                </li>
 
-						<li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-briefcase"></i> Serviços<i class="fa fa-angle-down rotate-icon"></i></a>
-							<div class="collapsible-body">
-								<ul>
-									<li><a class="dropdown-item" href="#">Banhos</a></li>
-									<li><a class="dropdown-item" href="#">Corte de cabelo</a></li>
-									<li><a class="dropdown-item" href="#">Corte de unhas</a></li>
-								</ul>
-							</div>
-						</li>
-						<li><a class="waves-effect arrow-r"><i class="fa fa-calendar "></i> Calendário</a></li>
-					</ul>
-				</li>
+		                <li><a class="collapsible-header waves-effect arrow-r"><i class="fa fa-briefcase"></i> Serviços<i
+		                        class="fa fa-angle-down rotate-icon"></i></a>
+		                    <div class="collapsible-body">
+		                        <ul>
+		                            <li><a class="dropdown-item" href="html/diary.html">Banhos</a></li>
+		                            <li><a class="dropdown-item" href="html/diary.html">Corte de cabelo</a></li>
+		                            <li><a class="dropdown-item" href="html/diary.html">Corte de unhas</a></li>
+		                        </ul>
+		                    </div>
+		                </li>
+		                <li><a href="html/diary.html" class="waves-effect arrow-r"><i class="fa fa-calendar "></i> Calendário</a></li>
+		            </ul>
+		        </li>
 				<!--/. Side navigation links -->
 
 			</ul>
@@ -95,9 +98,8 @@
 				</div>
 
 				<ul class="nav navbar-nav pull-right">
-					<li class="nav-item "><a class="nav-link"> <span class="label pink z-depth-1">2</span> <i class="fa fa-shopping-cart"></i> <span class="hidden-sm-down">Carrinho</span></a></li>
-					<li class="nav-item"><a class="nav-link"><i class="fa fa-sign-in"></i> <span class="hidden-sm-down">Iniciar Sessão</span></a></li>
-					<li class="nav-item "><a class="nav-link"><i class="fa fa-user-plus"></i> <span class="hidden-sm-down">Cadastrar-se</span></a></li>
+					<li class="nav-item"><a class="nav-link"><i class="fa fa-user"></i> <span class="hidden-sm-down" id="user"></span></a></li>
+					<li class="nav-item "><a class="nav-link"><i class="fa fa-cog"></i> <span class="hidden-sm-down" id="edit_user">Perfil</span></a></li>
 				</ul>
 
 			</nav>
@@ -112,7 +114,7 @@
 					<div class="row">
 						<div class="col-md-12 col-xl-8 offset-xl-2">
 							<div>
-								<a href="#" class="btn btn-floating btn-large purple accent-3" data-original-title="Adicionar pet" type="button" data-toggle="tooltip" data-placement="top" title="">
+								<a href="#" class="btn btn-floating btn-large purple accent-3" data-original-title="Adicionar pet" type="button" data-toggle="tooltip" data-placement="top" id="add_pet">
 									<i class="fa fa-plus"></i>
 								</a>
 							</div>
@@ -125,78 +127,12 @@
 									<tr>
 										<th>Pet</th>
 										<th class="hidden-sm-down">Nome</th>
-										<th>Ações</th>
+										<th>Edade</th>
+										<th>Raça</th>
+										<th>Ações</th>										
 									</tr>
 								</thead>
-
-								<tbody>
-									<tr>
-										<td><img src="../../Images/Pets/654654654.jpg" alt="Pet"></td>
-										<td class="hidden-sm-down">Boby</td>
-										<td>
-											<a href="#" class="btn btn-info btn-rounded" data-original-title="Informação da pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-info"></i>
-											</a>
-
-											<a href="#" class="btn btn-warning btn-rounded" data-original-title="Editar dados de pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-pencil"></i>
-											</a>
-											<a href="#" class="btn btn-danger btn-rounded" data-original-title="Remover pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-times"></i>
-											</a>
-										</td>
-									</tr>
-
-									<tr>
-										<td><img src="../../Images/Pets/554564654.jpg" alt="Pet"></td>
-										<td class="hidden-sm-down">Spak</td>
-										<td>
-											<a href="#" class="btn btn-info btn-rounded" data-original-title="Informação da pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-info"></i>
-											</a>
-
-											<a href="#" class="btn btn-warning btn-rounded" data-original-title="Editar dados de pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-pencil"></i>
-											</a>
-											<a href="#" class="btn btn-danger btn-rounded" data-original-title="Remover pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-times"></i>
-											</a>
-										</td>
-									</tr>
-
-									<tr>
-										<td><img src="../../Images/Pets/432413123.jpg" alt="Pet"></td>
-										<td class="hidden-sm-down">Guffy</td>
-										<td>
-											<a href="#" class="btn btn-info btn-rounded" data-original-title="Informação da pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-info"></i>
-											</a>
-
-											<a href="#" class="btn btn-warning btn-rounded" data-original-title="Editar dados de pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-pencil"></i>
-											</a>
-											<a href="#" class="btn btn-danger btn-rounded" data-original-title="Remover pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-times"></i>
-											</a>
-										</td>
-									</tr>
-
-									<tr>
-										<td><img src="../../Images/Pets/698593458.jpg" alt="Pet"></td>
-										<td class="hidden-sm-down">Docky</td>
-										<td>
-											<a href="#" class="btn btn-info btn-rounded" data-original-title="Informação da pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-info"></i>
-											</a>
-
-											<a href="#" class="btn btn-warning btn-rounded" data-original-title="Editar dados de pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-pencil"></i>
-											</a>
-											<a href="#" class="btn btn-danger btn-rounded" data-original-title="Remover pet" type="button" data-toggle="tooltip" data-placement="top" title="">
-												<i class="fa fa-times"></i>
-											</a>
-										</td>
-									</tr>
+								<tbody id="pets">
 								</tbody>
 							</table>
 							<!--/.Pets table-->
@@ -272,5 +208,8 @@
 			<!--/.Copyright-->
 		</footer>
 		<!--/.Footer-->
+		<script src="../../js/jquery-2.2.3.min.js"></script>
+		<script src="../../js/pets.js"></script>
+		<script src="../../js/mdb.min.js"></script>
 	</body>
 </html>
